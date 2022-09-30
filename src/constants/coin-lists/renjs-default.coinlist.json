@@ -1,0 +1,58 @@
+{
+  "name": "RenJS Coin List",
+  "timestamp": "2021-09-08T01:59:50.068Z",
+  "version": {
+    "major": 15,
+    "minor": 4,
+    "patch": 0
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/sushiswap/art/master/sushi/logo-256x256.png",
+  "keywords": ["varenx", "default"],
+  "coins": [
+    {
+      "chainId": 0,
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "decimals": 8,
+      "logoURI": "https://logos.varen.finance/btc.png",
+      "renToken": {
+        "chainId": 1,
+        "address": "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
+        "name": "Ren Bitcoin",
+        "symbol": "renBTC",
+        "decimals": 8,
+        "logoURI": "https://logos.varen.finance/0xeb4c2781e4eba804ce9a9803c67d0893436bb27d.png"
+      }
+    },
+    {
+      "chainId": 0,
+      "name": "Dogecoin",
+      "symbol": "DOGE",
+      "decimals": 8,
+      "logoURI": "https://logos.varen.finance/doge.png",
+      "renToken": {
+        "chainId": 1,
+        "address": "0x3832d2F059E55934220881F831bE501D180671A7",
+        "name": "Ren Dogecoin",
+        "symbol": "renDOGE",
+        "decimals": 8,
+        "logoURI": "https://logos.varen.finance/0x3832d2f059e55934220881f831be501d180671a7.png"
+      }
+    },
+    {
+      "chainId": 0,
+      "symbol": "ZEC",
+      "name": "Zcash",
+      "logoURI": "https://logos.varen.finance/zec.png",
+      "renToken": {
+        "chainId": 1,
+        "address": "0x1c5db575e2ff833e46a2e9864c22f4b22e0b37c2",
+        "name": "Ren Zash",
+        "symbol": "renZEC",
+        "decimals": 8,
+        "logoURI": "https://logos.varen.finance/0x1c5db575e2ff833e46a2e9864c22f4b22e0b37c2.png"
+      }
+    }
+  ]
+}
