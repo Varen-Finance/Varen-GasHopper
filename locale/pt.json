@@ -42,7 +42,5 @@
   "Wrong Network": "Rede Errada",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Está na rede errada",
-  "failed to load": "falha ao carregar",
-  "home page": "home page",
-  "loading...": "a carregar..."
+  "home page": "home page"
 }

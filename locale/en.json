@@ -42,7 +42,5 @@
   "Wrong Network": "Wrong Network",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "You are connected with the {currentNetwork} network, which is currently not supported.",
   "You are on the wrong network": "You are on the wrong network",
-  "failed to load": "failed to load",
-  "home page": "home page",
-  "loading...": "loading..."
+  "home page": "home page"
 }

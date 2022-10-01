@@ -42,7 +42,5 @@
   "Wrong Network": "เครือข่ายไม่ถูกต้อง",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "คุณใช้เครือข่ายไม่ถูกต้อง",
-  "failed to load": "ล้มเหลวในการโหลดข้อมูล",
-  "home page": "โฮมเพจ",
-  "loading...": "กำลังโหลดข้อมูล..."
+  "home page": "โฮมเพจ"
 }

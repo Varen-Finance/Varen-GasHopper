@@ -42,7 +42,5 @@
   "Wrong Network": "Zła sieć",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Jesteś w złej sieci",
-  "failed to load": "błąd z załadowaniem",
-  "home page": "Strona główna",
-  "loading...": "ładowanie..."
+  "home page": "Strona główna"
 }

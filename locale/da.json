@@ -42,7 +42,5 @@
   "Wrong Network": "Forkert netværk",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Du er på det forkerte netværk",
-  "failed to load": "Indlæsning fejlede",
-  "home page": "Hjemmeside",
-  "loading...": "Indlæser"
+  "home page": "Hjemmeside"
 }

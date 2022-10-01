@@ -42,7 +42,5 @@
   "Wrong Network": "Verkeerd Netwerk",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Je bent in het verkeerde netwerk",
-  "failed to load": "laden mislukt",
-  "home page": "home pagina",
-  "loading...": "laden..."
+  "home page": "home pagina"
 }

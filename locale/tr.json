@@ -42,7 +42,5 @@
   "Wrong Network": "Hatalı ağ",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Hatalı ağdasınız",
-  "failed to load": "yükleme başarısız",
-  "home page": "ana sayfa",
-  "loading...": "yükleniyor..."
+  "home page": "ana sayfa"
 }

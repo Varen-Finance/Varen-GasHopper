@@ -42,7 +42,5 @@
   "Wrong Network": "Mauvais réseau",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Vous êtes sur le mauvais réseau",
-  "failed to load": "Echec de chargement",
-  "home page": "Page d'accueil",
-  "loading...": "Chargement"
+  "home page": "Page d'accueil"
 }

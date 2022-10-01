@@ -42,7 +42,5 @@
   "Wrong Network": "Red Incorrecta",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Estás en la red equivocada",
-  "failed to load": "falló al cargar",
-  "home page": "pagina de inicio",
-  "loading...": "cargando..."
+  "home page": "pagina de inicio"
 }

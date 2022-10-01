@@ -42,7 +42,5 @@
   "Wrong Network": "Špatná síť",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Jste na špatné síti",
-  "failed to load": "chyba načítání",
-  "home page": "domovská stránka",
-  "loading...": "načítám..."
+  "home page": "domovská stránka"
 }

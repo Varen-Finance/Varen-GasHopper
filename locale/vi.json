@@ -42,7 +42,5 @@
   "Wrong Network": "Sai mạng lưới",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Mạng lưới không đúng",
-  "failed to load": "tải thất bại",
-  "home page": "trang chủ",
-  "loading...": "đang tải..."
+  "home page": "trang chủ"
 }

@@ -42,7 +42,5 @@
   "Wrong Network": "Λάθος δίκτυο",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Είστε σε λάθος δίκτυο",
-  "failed to load": "απέτυχε να φορτώσει",
-  "home page": "αρχική σελίδα",
-  "loading...": "φόρτωση..."
+  "home page": "αρχική σελίδα"
 }

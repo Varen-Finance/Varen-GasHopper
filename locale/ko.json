@@ -42,7 +42,5 @@
   "Wrong Network": "잘못된 네트워크",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "잘못된 네트워크에 연결되있습니다",
-  "failed to load": "로딩 실패했습니다",
-  "home page": "홈 페이지",
-  "loading...": "로딩 중"
+  "home page": "홈 페이지"
 }

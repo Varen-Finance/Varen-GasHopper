@@ -42,7 +42,5 @@
   "Wrong Network": "Rețea greșită",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "Nu sunteți conectat la rețeaua corectă",
-  "failed to load": "nu s-a putut încărca",
-  "home page": "pagină de start",
-  "loading...": "se incarcă..."
+  "home page": "pagină de start"
 }

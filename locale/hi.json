@@ -42,7 +42,5 @@
   "Wrong Network": "गलत नेटवर्क",
   "You are connected with the {currentNetwork} network, which is currently not supported.": "",
   "You are on the wrong network": "आप गलत नेटवर्क पर हैं",
-  "failed to load": "लोड करने में विफल",
-  "home page": "होम पेज",
-  "loading...": "लोड हो रहा है..."
+  "home page": "होम पेज"
 }
