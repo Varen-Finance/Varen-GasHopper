@@ -4,8 +4,8 @@ import ReactGA from 'react-ga'
 import { classNames } from '../../functions'
 
 const COLOR = {
-  default: 'text-varenx-gold opacity-80 hover:opacity-100 focus:opacity-100',
-  blue: 'text-varenx-gold opacity-80 hover:opacity-100 focus:opacity-100',
+  default: 'text-varen-gold opacity-80 hover:opacity-100 focus:opacity-100',
+  blue: 'text-varen-gold opacity-80 hover:opacity-100 focus:opacity-100',
 }
 
 interface ExternalLinkProps extends Omit<HTMLProps<HTMLAnchorElement>, 'as' | 'ref' | 'onClick'> {

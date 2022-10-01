@@ -30,7 +30,7 @@ export default function Option({
       onClick={onClick}
       className={classNames(
         clickable ? 'cursor-pointer' : '',
-        'bg-varenx-darkest-blue focus:outline-none flex items-center gap-4 justify-between w-full px-4 py-3 rounded border border-varenx-blue hover:bg-varenx-dark-blue'
+        'bg-varen-darkest-blue focus:outline-none flex items-center gap-4 justify-between w-full px-4 py-3 rounded border border-varen-blue hover:bg-varen-dark-blue'
       )}
     >
       <div className="flex flex-col gap-1">

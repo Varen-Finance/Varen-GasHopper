@@ -1,5 +1,5 @@
 export { default as useActiveWeb3React } from './useActiveWeb3React'
 export { useColor, useListColor } from './useColor'
-export * from './useContract'
 export { default as useFuse } from './useFuse'
+export * from './useContract'
 export { default as useSortableData } from './useSortableData'

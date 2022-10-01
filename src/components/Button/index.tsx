@@ -11,22 +11,22 @@ const SIZE = {
 
 const FILLED = {
   default: 'bg-transparent opacity-80 hover:opacity-100',
-  red: 'bg-red bg-opacity-80 w-full rounded text-high-emphesis hover:bg-varenx-dark-blue disabled:bg-opacity-80',
-  blue: 'bg-varenx-blue w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
-  pink: 'bg-varenx-dark-gold rounded text-varenx-gold hover:bg-varenx-gold hover:text-varenx-dark-gold',
-  gray: 'border rounded shadow-sm focus:ring-2 focus:ring-offset-2 bg-varenx-gray w-full text-white border-dark-800 hover:bg-opacity-100 focus:ring-offset-dark-700 focus:ring-dark-800 disabled:bg-opacity-50 disabled:opacity-80 ',
+  red: 'bg-red bg-opacity-80 w-full rounded text-high-emphesis hover:bg-varen-dark-blue disabled:bg-opacity-80',
+  blue: 'bg-varen-blue w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
+  pink: 'bg-varen-dark-gold rounded text-varen-gold hover:bg-varen-gold hover:text-varen-dark-gold',
+  gray: 'border rounded shadow-sm focus:ring-2 focus:ring-offset-2 bg-varen-gray w-full text-white border-dark-800 hover:bg-opacity-100 focus:ring-offset-dark-700 focus:ring-dark-800 disabled:bg-opacity-50 disabled:opacity-80 ',
   green: 'bg-green bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
-  gradient: 'bg-varenx-blue w-full rounded text-high-emphesis hover:bg-varenx-dark-blue disabled:bg-opacity-80',
+  gradient: 'bg-varen-blue w-full rounded text-high-emphesis hover:bg-varen-dark-blue disabled:bg-opacity-80',
 }
 
 const OUTLINED = {
   default: 'bg-transparent opacity-80 hover:opacity-100',
   red: 'bg-red bg-opacity-20 outline-red rounded text-red hover:bg-opacity-40 disabled:bg-opacity-20',
-  blue: 'bg-varenx-blue outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20',
+  blue: 'bg-varen-blue outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20',
   pink: 'bg-pink bg-opacity-20 outline-pink rounded text-pink hover:bg-opacity-40 disabled:bg-opacity-20',
-  gray: 'bg-dark800 border border-blue rounded text-white hover:bg-varenx-dark-blue disabled:opacity-50 disabled:bg-dark800',
+  gray: 'bg-dark800 border border-blue rounded text-white hover:bg-varen-dark-blue disabled:opacity-50 disabled:bg-dark800',
   green: 'bg-green bg-opacity-20 border border-green rounded text-green hover:bg-opacity-40 disabled:bg-opacity-20',
-  gradient: 'border border-transparent border-varenx-dark-blue opacity-80 hover:opacity-100 disabled:bg-opacity-20',
+  gradient: 'border border-transparent border-varen-dark-blue opacity-80 hover:opacity-100 disabled:bg-opacity-20',
 }
 
 const EMPTY = {

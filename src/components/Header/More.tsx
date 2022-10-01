@@ -72,7 +72,7 @@ export default function Menu() {
   const solutionsExternal = externalLinks(i18n)
 
   return (
-    <Popover className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md border-varenx-blue hover:border-indigo-400 whitespace-nowrap">
+    <Popover className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md border-varen-blue hover:border-indigo-400 whitespace-nowrap">
       {({ open }) => (
         <>
           <Popover.Button>
@@ -100,8 +100,8 @@ export default function Menu() {
               className="absolute z-50 w-full mt-3 transform -translate-x-full md:max-w-xs lg:top-12 left-full"
               style={{ bottom: '4rem' }}
             >
-              <div className="overflow-hidden border rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 border-varenx-blue hover:border-indigo-400">
-                <div className="relative grid gap-6 px-6 py-6 bg-varenx-darker-blue sm:gap-8 sm:p-8">
+              <div className="overflow-hidden border rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 border-varen-blue hover:border-indigo-400">
+                <div className="relative grid gap-6 px-6 py-6 bg-varen-darker-blue sm:gap-8 sm:p-8">
                   {solutionsInternal.map((item) => (
                     <ExternalLink
                       key={item.name}
@@ -118,7 +118,7 @@ export default function Menu() {
                     </ExternalLink>
                   ))}
                 </div>
-                <div className="relative grid gap-6 px-6 py-6 border-t border-gray-700 min-w-max bg-varenx-darker-blue sm:gap-8 sm:p-8">
+                <div className="relative grid gap-6 px-6 py-6 border-t border-gray-700 min-w-max bg-varen-darker-blue sm:gap-8 sm:p-8">
                   {solutionsExternal.map((item) => (
                     <ExternalLink
                       key={item.name}
@@ -135,7 +135,7 @@ export default function Menu() {
                     </ExternalLink>
                   ))}
                 </div>
-                <div className="relative grid gap-6 px-6 py-6 min-w-max bg-varenx-darker-blue sm:gap-6 sm:pb-8 sm:pt-5">
+                <div className="relative grid gap-6 px-6 py-6 min-w-max bg-varen-darker-blue sm:gap-6 sm:pb-8 sm:pt-5">
                   <ExternalLink
                     key="Discord"
                     href="https://discord.varen.finance/"
@@ -143,7 +143,7 @@ export default function Menu() {
                   >
                     <div className="flex space-x-4 text-base font-medium text-high-emphesis align-center">
                       <Image src="https://varenx.com/images/misc/discord.svg" alt="Discord" width={45} height={45} />
-                      <ExternalLink className="text-xl text-varenx-gold" href="https://discord.varen.finance">
+                      <ExternalLink className="text-xl text-varen-gold" href="https://discord.varen.finance">
                         {i18n._(t`Contribute Now!`)}
                       </ExternalLink>
                     </div>

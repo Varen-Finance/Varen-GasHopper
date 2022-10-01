@@ -84,7 +84,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({ toggleWalletModal, ENSName })
                 </ExternalLink>
               )}
               {account && (
-                <Copy toCopy={account} className="opacity-80 text-varenx-gold hover:opacity-100">
+                <Copy toCopy={account} className="opacity-80 text-varen-gold hover:opacity-100">
                   <Typography variant="xs" weight={700}>
                     {i18n._(t`Copy Address`)}
                   </Typography>

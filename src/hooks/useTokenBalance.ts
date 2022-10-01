@@ -8,7 +8,6 @@ import { isAddress } from '../functions/validate'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useBlockNumber } from '../state/application/hooks'
 import { useContract } from './useContract'
-import useTransactionStatus from './useTransactionStatus'
 
 export interface BalanceProps {
   value: BigNumber
@@ -25,7 +24,6 @@ function useTokenBalance(tokenAddress: string): BalanceProps {
   })
   const { account, chainId, library } = useActiveWeb3React()
   const currentBlockNumber = useBlockNumber()
-  const currentTransactionStatus = useTransactionStatus()
   const addressCheckSum = isAddress(tokenAddress)
   const tokenContract = useContract(addressCheckSum ? addressCheckSum : undefined, ERC20_ABI, false)
   const fetchBalance = useCallback(async () => {
@@ -53,7 +51,7 @@ function useTokenBalance(tokenAddress: string): BalanceProps {
     if (account && tokenContract) {
       fetchBalance()
     }
-  }, [account, setBalance, currentBlockNumber, currentTransactionStatus, tokenAddress, fetchBalance, tokenContract])
+  }, [account, setBalance, currentBlockNumber, tokenAddress, fetchBalance, tokenContract])
 
   return balance
 }

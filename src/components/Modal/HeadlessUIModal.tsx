@@ -128,7 +128,7 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
           >
             <div
               className={classNames(
-                transparent ? '' : 'bg-varenx-darkest-blue border border-varenx-blue',
+                transparent ? '' : 'bg-varen-darkest-blue border border-varen-blue',
                 isDesktop ? MAX_WIDTH_CLASS_MAPPING[maxWidth] : '',
                 isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
                 'inline-block align-bottom rounded text-left overflow-hidden transform p-4'

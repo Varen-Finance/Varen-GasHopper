@@ -2,10 +2,6 @@
 // pages/_document.js
 import { Head, Html, Main, NextScript } from 'next/document'
 
-const APP_NAME = 'VarenX'
-const APP_DESCRIPTION =
-  'A cross-chain swapping dApp powered by Ren and built by Varen Finance, an Ethereum based multi-chain DeFi hub.'
-
 export default function Document() {
   return (
     <Html>
@@ -16,11 +12,25 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000120" />
         <meta name="msapplication-TileColor" content="#000120" />
         <meta name="theme-color" content="#000120" />
-        <meta property="og:image" content="https://varenx.com/banner-application.png" />
-        <meta property="og:url" content="https://varenx.com" />
+        <meta property="og:image" content="https://gashopper.varen.finance/banner-application.png" />
+        <meta property="og:url" content="https://gashopper.varen.finance" />
         <meta property="og:type" content="Website" />
-        <meta name="twitter:image" content="https://varenx.com/banner-application.png" />
+        <meta name="twitter:image" content="https://gashopper.varen.finance/banner-application.png" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:title" content="Gashopper | Multichain Faucet by Varen DAO" />
+        <meta name="twitter:title" content="Gashopper | Multichain Faucet by Varen DAO" />
+        <meta
+          name="description"
+          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+        />
+        <meta
+          property="og:description"
+          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+        />
+        <meta
+          name="twitter:description"
+          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+        />
       </Head>
       <body>
         <Main />

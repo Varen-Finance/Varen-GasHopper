@@ -15,7 +15,7 @@ const MAX_WIDTH = {
   xs: 'max-w-xs',
 }
 
-const Container = ({ children, maxWidth = '2xl', className = '', ...rest }) => (
+const Container = ({ children, maxWidth = '7xl', className = '', ...rest }) => (
   <div className={classNames(className, MAX_WIDTH[maxWidth], 'w-full')} {...rest}>
     {children}
   </div>

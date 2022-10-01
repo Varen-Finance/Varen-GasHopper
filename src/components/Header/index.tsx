@@ -49,7 +49,7 @@ function AppBar(): JSX.Element {
                   <LanguageSwitch />
                 </div>
 
-                <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full py-2 rounded lg:w-auto bg-varenx-darkest-blue lg:relative lg:p-0 lg:bg-transparent">
+                <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full py-2 rounded lg:w-auto bg-varen-darkest-blue lg:relative lg:p-0 lg:bg-transparent">
                   <div className="flex items-center justify-between space-x-2 sm:justify-end">
                     <div className="hidden md:block">
                       <LanguageSwitch />
@@ -59,7 +59,7 @@ function AppBar(): JSX.Element {
                       <Web3Network />
                     </div>
 
-                    <div className="flex items-center w-auto border rounded cursor-default select-none text-md bg-varenx-blue border-varenx-blue whitespace-nowrap">
+                    <div className="flex items-center w-auto border rounded cursor-default select-none text-md bg-varen-blue border-varen-blue whitespace-nowrap">
                       {account && chainId && userEthBalance && (
                         <>
                           <div className="px-3 py-2 text-primary text-bold">
@@ -75,19 +75,6 @@ function AppBar(): JSX.Element {
                 </div>
               </div>
             </div>
-
-            <Popover.Panel className="sm:hidden">
-              <div className="flex flex-col px-4 pt-2 pb-3 space-y-1">
-                <Link href={'/exchange/swap/[[...tokens]]'} as={'/swap'}>
-                  <a
-                    id={`swap-nav-link`}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
-                  >
-                    {i18n._(t`Swap`)}
-                  </a>
-                </Link>
-              </div>
-            </Popover.Panel>
           </>
         )}
       </Popover>
@@ -111,7 +98,7 @@ function AppBar(): JSX.Element {
           <div className={`grid gap-2 grid-cols-2`}>
             {ACTIVATED_NETWORKS.map((key: ChainId, idx: number) => (
               <button
-                className="w-full col-span-1 p-px rounded bg-varenx-blue"
+                className="w-full col-span-1 p-px rounded bg-varen-blue"
                 key={idx}
                 onClick={() => {
                   const params = SUPPORTED_NETWORKS[key]
@@ -123,7 +110,7 @@ function AppBar(): JSX.Element {
                   }
                 }}
               >
-                <div className="flex items-center w-full h-full p-3 space-x-3 rounded bg-varenx-dark-blue">
+                <div className="flex items-center w-full h-full p-3 space-x-3 rounded bg-varen-dark-blue">
                   <Image
                     // @ts-ignore
                     src={NETWORK_ICON[key]}

@@ -46,7 +46,7 @@ const LangSwitcher = () => {
       </div>
       <div
         className={classNames(
-          'absolute right-0 w-[max-content] mt-2 origin-top-right divide-y divide-dark-600 rounded shadow-lg bg-varenx-darkest-blue focus:outline-none',
+          'absolute right-0 w-[max-content] mt-2 origin-top-right divide-y divide-dark-600 rounded shadow-lg bg-varen-darkest-blue focus:outline-none',
           isOpen ? 'block' : 'hidden'
         )}
       >
@@ -58,7 +58,7 @@ const LangSwitcher = () => {
                   <a
                     href="#"
                     className={
-                      'group flex items-center p-2 text-sm hover:bg-varenx-dark-blue focus:bg-varenx-dark-blue rounded font-bold'
+                      'group flex items-center p-2 text-sm hover:bg-varen-dark-blue focus:bg-varen-dark-blue rounded font-bold'
                     }
                     onClick={() => {
                       cookieCutter.set('NEXT_LOCALE', l)

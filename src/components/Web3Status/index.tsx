@@ -101,7 +101,7 @@ function Web3StatusInner() {
     return (
       <div
         id="web3-status-connected"
-        className="flex items-center px-3 py-1 mr-1 border rounded cursor-pointer pointer-events-auto border-varenx-dark-blue text-md bg-varenx-dark-blue hover:border-indigo-400 "
+        className="flex items-center px-3 py-1 mr-1 border rounded cursor-pointer pointer-events-auto border-varen-dark-blue text-md bg-varen-dark-blue hover:border-indigo-400 "
         onClick={toggleWalletModal}
       >
         <div className="mr-2">{ENSName || shortenAddress(account)}</div>

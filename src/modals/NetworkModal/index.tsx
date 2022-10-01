@@ -101,7 +101,7 @@ const NetworkModal: FC = () => {
               return (
                 <div
                   key={i}
-                  className="flex items-center w-full gap-4 px-4 py-3 border rounded cursor-default bg-varenx-dark-blue focus:outline-none border-varenx-blue"
+                  className="flex items-center w-full gap-4 px-4 py-3 border rounded cursor-default bg-varen-dark-blue focus:outline-none border-varen-blue"
                 >
                   <Image
                     // @ts-ignore TYPE NEEDS FIXING
@@ -142,7 +142,7 @@ const NetworkModal: FC = () => {
                   }
                 }}
                 className={classNames(
-                  'bg-varenx-darkest-blue focus:outline-none flex items-center gap-4 w-full px-4 py-3 rounded border border-varenx-blue hover:bg-varenx-dark-blue'
+                  'bg-varen-darkest-blue focus:outline-none flex items-center gap-4 w-full px-4 py-3 rounded border border-varen-blue hover:bg-varen-dark-blue'
                 )}
               >
                 {/*@ts-ignore TYPE NEEDS FIXING*/}

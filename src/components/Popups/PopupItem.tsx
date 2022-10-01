@@ -24,7 +24,7 @@ const AnimatedFader = ({ duration }) => (
         }
       }
     `}</style>
-    <div className="animation h-[3px] bg-varenx-gold" />
+    <div className="animation h-[3px] bg-varen-gold" />
   </div>
 )
 

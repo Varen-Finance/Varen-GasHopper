@@ -96,7 +96,7 @@ function Web3Network(): JSX.Element | null {
 
   return (
     <div
-      className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md bg-varenx-blue border-varenx-blue hover:border-indigo-400 whitespace-nowrap"
+      className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md bg-varen-blue border-varen-blue hover:border-indigo-400 whitespace-nowrap"
       onClick={() => toggleNetworkModal()}
     >
       <div className="grid items-center grid-flow-col px-3 py-2 space-x-2">

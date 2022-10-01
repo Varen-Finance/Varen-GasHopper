@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
       try {
         // Load messages from AWS, use q session param to get latest version from cache
         const res = await fetch(
-          `https://raw.githubusercontent.com/varenfinance/translations/master/varenx/${locale}.json`
+          `https://raw.githubusercontent.com/varenfinance/translations/master/gashopper/${locale}.json`
         )
         const remoteMessages = await res.json()
 
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Varen Gashopper</title>
+        <title>Gashopper | Multichain Faucet by Varen DAO</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
