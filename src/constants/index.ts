@@ -36,3 +36,73 @@ export const BLOCKCHAIN = {
   [ChainId.MOONRIVER]: 'moonriver',
   [ChainId.TELOS]: 'telos',
 }
+
+export const SUPPORTED_NETWORKS: {
+  [key: number]: {
+    chainId: string
+    chainName: string
+    nativeCurrency: {
+      name: string
+      symbol: string
+      decimals: number
+    }
+    rpcUrls: string[]
+    blockExplorerUrls: string[]
+  }
+} = {
+  [ChainId.ETHEREUM]: {
+    chainId: '0x1',
+    chainName: 'Ethereum',
+    nativeCurrency: {
+      name: 'Ethereum',
+      symbol: 'ETH',
+      decimals: 18,
+    },
+    rpcUrls: ['https://mainnet.infura.io/v3'],
+    blockExplorerUrls: ['https://etherscan.com'],
+  },
+  [ChainId.BSC]: {
+    chainId: '0x38',
+    chainName: 'BNB Chain',
+    nativeCurrency: {
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://bsc-dataseed.binance.org'],
+    blockExplorerUrls: ['https://bscscan.com'],
+  },
+  [ChainId.MATIC]: {
+    chainId: '0x89',
+    chainName: 'Matic',
+    nativeCurrency: {
+      name: 'Matic',
+      symbol: 'MATIC',
+      decimals: 18,
+    },
+    rpcUrls: ['https://polygon-mainnet.infura.io/v3'],
+    blockExplorerUrls: ['https://polygonscan.com'],
+  },
+  [ChainId.ARBITRUM]: {
+    chainId: '0xA4B1',
+    chainName: 'Arbitrum',
+    nativeCurrency: {
+      name: 'Ethereum',
+      symbol: 'ETH',
+      decimals: 18,
+    },
+    rpcUrls: ['https://arbitrum-mainnet.infura.io/v3'],
+    blockExplorerUrls: ['https://arbiscan.io'],
+  },
+  [ChainId.FANTOM]: {
+    chainId: '0xfa',
+    chainName: 'Fantom',
+    nativeCurrency: {
+      name: 'Fantom',
+      symbol: 'FTM',
+      decimals: 18,
+    },
+    rpcUrls: ['https://rpcapi.fantom.network'],
+    blockExplorerUrls: ['https://ftmscan.com'],
+  },
+}

@@ -1,11 +1,10 @@
 import { ChainId, NATIVE } from '@sushiswap/core-sdk'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { ACTIVATED_NETWORKS } from '../../constants'
 import ExternalLink from '../ExternalLink'
 import Image from 'next/image'
 import LanguageSwitch from '../LanguageSwitch'
-import Link from 'next/link'
 import More from './More'
 import { Popover } from '@headlessui/react'
 import Web3Network from '../Web3Network'
@@ -31,11 +30,16 @@ function AppBar(): JSX.Element {
   return (
     <header className="relative z-50 flex-shrink-0 w-full">
       <Popover as="nav" className="z-10 w-full bg-transparent">
-        <div className="px-4 py-4">
+        <div className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <ExternalLink className="opacity-100" href="https://varen.finance" title={i18n._(t`About Varen`)}>
-                <Image src="https://varenx.com/images/varen-x/varen-x-logo.svg" alt="VarenX" width={161} height={45} />
+                <Image
+                  src="https://res.cloudinary.com/varen-finance/image/upload/v1664737320/gashopper-logo_ydtgsp.svg"
+                  alt="Gashopper by Varen DAO"
+                  width={303}
+                  height={45}
+                />
               </ExternalLink>
             </div>
             <div className="relative z-50 block md:hidden">

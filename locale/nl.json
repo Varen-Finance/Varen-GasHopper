@@ -1,4 +1,6 @@
 {
+  "1. Select the Network to fund your wallet from": "",
+  "2. Select the Networks you want to fund your wallet on": "",
   "About Varen": "Over Varen",
   "Account": "Account",
   "Available Networks": "Beschikbare netwerken",
@@ -18,6 +20,8 @@
   "Error connecting": "Verbinding mislukt",
   "Error connecting. Try refreshing the page.": "Verbinding mislukt. Probeer de pagina te verversen",
   "Error while trying to connect": "Fout opgetreden bij verbinden",
+  "Fund your wallet on": "",
+  "Fund your wallet with": "",
   "Github": "Github",
   "Governance Forum": "Governance Forum",
   "Initializing": "Initialiseren",

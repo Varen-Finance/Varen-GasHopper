@@ -72,7 +72,7 @@ export default function Menu() {
   const solutionsExternal = externalLinks(i18n)
 
   return (
-    <Popover className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md border-varen-blue hover:border-indigo-400 whitespace-nowrap">
+    <Popover className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none bg-dark800 text-md border-varen-blue hover:bg-varen-dark-blue whitespace-nowrap">
       {({ open }) => (
         <>
           <Popover.Button>

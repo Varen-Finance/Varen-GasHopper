@@ -1,4 +1,5 @@
 import { NETWORK_ICON, NETWORK_LABEL } from 'app/config/networks'
+import { classNames } from 'app/functions'
 import { switchToNetwork } from 'app/functions/network'
 import useIsWindowVisible from 'app/hooks/useIsWindowVisible'
 import usePrevious from 'app/hooks/usePrevious'
@@ -11,7 +12,11 @@ import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useState } from 'react'
 import Button from '../Button'
 
-function Web3Network(): JSX.Element | null {
+interface Props {
+  variant?: 'base' | 'large'
+}
+
+function Web3Network({ variant = 'base' }: Props): JSX.Element | null {
   const { chainId, library } = useActiveWeb3React()
 
   const toggleNetworkModal = useNetworkModalToggle()
@@ -99,18 +104,24 @@ function Web3Network(): JSX.Element | null {
 
   if (!chainId || !library) return null
 
+  const size = variant === 'base' ? 22 : 34
+  const buttonVariant = variant === 'base' ? 'outlined' : 'empty'
+  const buttonClasses = variant === 'base' ? 'text-white' : 'text-xl'
+
   return (
     <Button
       id="network-select"
       onClick={toggleNetworkModal}
-      variant="outlined"
+      variant={buttonVariant}
       color="gray"
-      className="text-white"
+      className={buttonClasses}
       size="sm"
     >
       <div className="grid items-center grid-flow-col space-x-2">
-        <Image src={NETWORK_ICON[chainId]} alt="Switch Network" className="rounded" width="22px" height="22px" />
-        <div className="hidden text-white md:flex">{NETWORK_LABEL[chainId]}</div>
+        <Image src={NETWORK_ICON[chainId]} alt="Switch Network" className="rounded" width={size} height={size} />
+        <div className={classNames(variant === 'base' ? 'hidden text-white md:flex' : 'flex text-white')}>
+          {NETWORK_LABEL[chainId]}
+        </div>
       </div>
       <NetworkModel />
     </Button>

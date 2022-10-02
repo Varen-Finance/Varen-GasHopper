@@ -1,4 +1,6 @@
 {
+  "1. Select the Network to fund your wallet from": "",
+  "2. Select the Networks you want to fund your wallet on": "",
   "About Varen": "เกี่ยวกับ Varen",
   "Account": "บัญชีผู้ใช้งาน",
   "Available Networks": "เครือข่ายที่มีอยู่",
@@ -18,6 +20,8 @@
   "Error connecting": "ทำการเชื่อมต่อไม่สำเร็จ",
   "Error connecting. Try refreshing the page.": "ทำการเชื่อมต่อไม่สำเร็จ กำลังพยายามเชื่อมต่อหน้าเพจนี้อีกครั้ง",
   "Error while trying to connect": "เกิดข้อผิดพลาดขณะกำลังพยายามเชื่อมต่อ",
+  "Fund your wallet on": "",
+  "Fund your wallet with": "",
   "Github": "Github",
   "Governance Forum": "Governance Forum",
   "Initializing": "กำลังเริ่มต้น",

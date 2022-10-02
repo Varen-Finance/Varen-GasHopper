@@ -77,7 +77,7 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
   [ChainId.XDAI]: 'Gnosis',
   [ChainId.ARBITRUM]: 'Arbitrum',
   [ChainId.ARBITRUM_TESTNET]: 'Arbitrum Testnet',
-  [ChainId.BSC]: 'BSC',
+  [ChainId.BSC]: 'BNB Chain',
   [ChainId.BSC_TESTNET]: 'BSC Testnet',
   [ChainId.MOONBEAM_TESTNET]: 'Moonbase',
   [ChainId.AVALANCHE]: 'Avalanche',

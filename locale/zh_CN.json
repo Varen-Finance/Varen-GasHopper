@@ -1,4 +1,6 @@
 {
+  "1. Select the Network to fund your wallet from": "",
+  "2. Select the Networks you want to fund your wallet on": "",
   "About Varen": "关于 Varen",
   "Account": "帐户",
   "Available Networks": "可运行网络",
@@ -18,6 +20,8 @@
   "Error connecting": "连接错误",
   "Error connecting. Try refreshing the page.": "连接错误，请尝试刷新页面",
   "Error while trying to connect": "尝试连接时错误",
+  "Fund your wallet on": "",
+  "Fund your wallet with": "",
   "Github": "Github",
   "Governance Forum": "管理论坛",
   "Initializing": "初始化中",

@@ -71,8 +71,8 @@ module.exports = {
         'high-emphesis': '#E3E3E3',
         'low-emphesis-green': '#4e8415',
         'high-emphesis-green': '#7ed321',
-        primary: '#BFBFBF',
-        secondary: '#7F7F7F',
+        primary: '#FFFFFF',
+        secondary: '#BFBFBF',
       },
       lineHeight: {
         '48px': '48px',
