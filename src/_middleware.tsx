@@ -13,26 +13,20 @@ const SUBDOMAIN_CHAIN_ID: { [subdomain: string]: string } = {
 const DEFAULT_CHAIN_ID = '1'
 
 export function middleware(req: NextRequest) {
-  // const response = NextResponse.next()
-
   const chainId = req.cookies['chain-id']
 
   const subdomain = req.headers.get('host')?.split('.')[0]
-
   const res = NextResponse.next()
 
-  // If chainId already set and no subdomain, just return...
   if (chainId && !subdomain) {
     return res
   }
 
-  // set the `cookie`
-  res.cookie(
+  res.cookies.set(
     'chain-id',
     subdomain && subdomain in SUBDOMAIN_CHAIN_ID ? SUBDOMAIN_CHAIN_ID[subdomain] : DEFAULT_CHAIN_ID,
     { sameSite: 'none', secure: true }
   )
 
-  // return the res
   return res
 }

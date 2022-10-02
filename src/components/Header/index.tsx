@@ -59,7 +59,7 @@ function AppBar(): JSX.Element {
                       <Web3Network />
                     </div>
 
-                    <div className="flex items-center w-auto border rounded cursor-default select-none text-md bg-varen-blue border-varen-blue whitespace-nowrap">
+                    <div className="flex items-center w-auto cursor-default whitespace-nowrap">
                       {account && chainId && userEthBalance && (
                         <>
                           <div className="px-3 py-2 text-primary text-bold">

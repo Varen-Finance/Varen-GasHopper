@@ -1,7 +1,6 @@
 @tailwind base;
 
 @import '@fontsource/dm-sans/index.css';
-@import 'react-virtualized/styles.css';
 @import 'rc-slider/assets/index.css';
 
 @import './variables.css';
@@ -36,8 +35,6 @@ body {
   color: var(--text-primary);
 }
 
-
-
 body {
   position: relative;
   margin: 0;
@@ -57,7 +54,6 @@ input:focus {
   box-shadow: none;
   outline: none;
 }
-
 
 .background-gradient {
   min-height: 100vh;

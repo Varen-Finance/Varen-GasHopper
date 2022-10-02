@@ -9,6 +9,7 @@ import Cookies from 'js-cookie'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useState } from 'react'
+import Button from '../Button'
 
 function Web3Network(): JSX.Element | null {
   const { chainId, library } = useActiveWeb3React()
@@ -95,16 +96,20 @@ function Web3Network(): JSX.Element | null {
   if (!chainId || !library) return null
 
   return (
-    <div
-      className="flex items-center w-auto border rounded cursor-pointer pointer-events-auto select-none text-md bg-varen-blue border-varen-blue hover:border-indigo-400 whitespace-nowrap"
-      onClick={() => toggleNetworkModal()}
+    <Button
+      id="network-select"
+      onClick={toggleNetworkModal}
+      variant="outlined"
+      color="gray"
+      className="text-white"
+      size="sm"
     >
-      <div className="grid items-center grid-flow-col px-3 py-2 space-x-2">
+      <div className="grid items-center grid-flow-col space-x-2">
         <Image src={NETWORK_ICON[chainId]} alt="Switch Network" className="rounded" width="22px" height="22px" />
-        <div className="hidden text-primary md:flex">{NETWORK_LABEL[chainId]}</div>
+        <div className="hidden text-white md:flex">{NETWORK_LABEL[chainId]}</div>
       </div>
       <NetworkModel />
-    </div>
+    </Button>
   )
 }
 
