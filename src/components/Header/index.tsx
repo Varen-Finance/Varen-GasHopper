@@ -31,52 +31,42 @@ function AppBar(): JSX.Element {
   return (
     <header className="relative z-50 flex-shrink-0 w-full">
       <Popover as="nav" className="z-10 w-full bg-transparent">
-        {({ open }) => (
-          <>
-            <div className="px-4 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <ExternalLink className="opacity-100" href="https://varen.finance" title={i18n._(t`About Varen`)}>
-                    <Image
-                      src="https://varenx.com/images/varen-x/varen-x-logo.svg"
-                      alt="VarenX"
-                      width={161}
-                      height={45}
-                    />
-                  </ExternalLink>
-                </div>
-                <div className="relative z-50 block md:hidden">
+        <div className="px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <ExternalLink className="opacity-100" href="https://varen.finance" title={i18n._(t`About Varen`)}>
+                <Image src="https://varenx.com/images/varen-x/varen-x-logo.svg" alt="VarenX" width={161} height={45} />
+              </ExternalLink>
+            </div>
+            <div className="relative z-50 block md:hidden">
+              <LanguageSwitch />
+            </div>
+
+            <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full py-2 rounded lg:w-auto bg-varen-darkest-blue lg:relative lg:p-0 lg:bg-transparent">
+              <div className="flex items-center justify-between space-x-2 sm:justify-end">
+                <div className="hidden md:block">
                   <LanguageSwitch />
                 </div>
 
-                <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full py-2 rounded lg:w-auto bg-varen-darkest-blue lg:relative lg:p-0 lg:bg-transparent">
-                  <div className="flex items-center justify-between space-x-2 sm:justify-end">
-                    <div className="hidden md:block">
-                      <LanguageSwitch />
-                    </div>
-
-                    <div className="flex items-center">
-                      <Web3Network />
-                    </div>
-
-                    <div className="flex items-center w-auto cursor-default whitespace-nowrap">
-                      {account && chainId && userEthBalance && (
-                        <>
-                          <div className="px-3 py-2 text-primary text-bold">
-                            {userEthBalance?.toSignificant(4)} {NATIVE[chainId].symbol}
-                          </div>
-                        </>
-                      )}
-                      <Web3Status />
-                    </div>
-
-                    <More />
-                  </div>
+                <div className="flex items-center">
+                  <Web3Network />
                 </div>
+
+                <div className="flex items-center w-auto cursor-default whitespace-nowrap">
+                  {account && chainId && userEthBalance && (
+                    <>
+                      <div className="px-3 py-2 text-primary text-bold">
+                        {userEthBalance?.toSignificant(4)} {NATIVE[chainId].symbol}
+                      </div>
+                    </>
+                  )}
+                  <Web3Status />
+                </div>
+                <More />
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </Popover>
       <HeadlessUIModal.Controlled
         // @ts-ignore

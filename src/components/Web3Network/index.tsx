@@ -43,7 +43,11 @@ function Web3Network(): JSX.Element | null {
         })
         .catch(() => {
           if (chainId) {
-            router.replace({ pathname: window.location.pathname, query: { ...router.query, chainId } })
+            try {
+              router.replace({ pathname: window.location.pathname, query: { ...router.query, chainId } })
+            } catch (e) {
+              console.log(e)
+            }
           }
         })
         .finally(() => {

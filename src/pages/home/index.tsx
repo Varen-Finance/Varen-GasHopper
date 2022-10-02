@@ -1,4 +1,4 @@
-import Container from '../components/Container'
+import Container from '../../components/Container'
 import Head from 'next/head'
 import DoubleGlowShadow from 'app/components/DoubleGlowShadow'
 import Row from 'app/components/Row'

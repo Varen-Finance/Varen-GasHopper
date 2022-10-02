@@ -26,6 +26,15 @@ const nextConfig = {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/varen-finance/image/fetch/',
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/home',
+        permanent: true,
+      },
+    ]
+  },
   i18n: {
     localeDetection: true,
     locales,

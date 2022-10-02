@@ -21,6 +21,11 @@ const Palm = 'https://logos.varen.finance/networks/palm.jpg'
 const Moonriver = 'https://logos.varen.finance/networks/moonriver.jpg'
 const Fuse = 'https://logos.varen.finance/networks/fuse.jpg'
 const Telos = 'https://logos.varen.finance/networks/telos.jpg'
+const Optimism = 'https://raw.githubusercontent.com/sushiswap/list/master/logos/network-logos/optimism.jpg'
+const Kava = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/kava.svg'
+const Metis = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/metis.svg'
+const ArbitrumNova = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/arbitrum-nova.svg'
+const BobaAvax = 'https://raw.githubusercontent.com/sushiswap/list/master/logos/network-logos/boba-avax.jpg'
 
 export const NETWORK_ICON = {
   [ChainId.ETHEREUM]: Mainnet,
@@ -51,6 +56,12 @@ export const NETWORK_ICON = {
   [ChainId.MOONRIVER]: Moonriver,
   [ChainId.FUSE]: Fuse,
   [ChainId.TELOS]: Telos,
+  [ChainId.MOONBEAM]: Moonbeam,
+  [ChainId.OPTIMISM]: Optimism,
+  [ChainId.KAVA]: Kava,
+  [ChainId.METIS]: Metis,
+  [ChainId.ARBITRUM_NOVA]: ArbitrumNova,
+  [ChainId.BOBA_AVAX]: BobaAvax,
 }
 
 export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
@@ -61,13 +72,13 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
   [ChainId.KOVAN]: 'Kovan',
   [ChainId.FANTOM]: 'Fantom',
   [ChainId.FANTOM_TESTNET]: 'Fantom Testnet',
-  [ChainId.MATIC]: 'Polygon (Matic)',
-  [ChainId.MATIC_TESTNET]: 'Matic Testnet',
-  [ChainId.XDAI]: 'xDai',
+  [ChainId.MATIC]: 'Polygon',
+  [ChainId.MATIC_TESTNET]: 'Polygon Testnet',
+  [ChainId.XDAI]: 'Gnosis',
   [ChainId.ARBITRUM]: 'Arbitrum',
   [ChainId.ARBITRUM_TESTNET]: 'Arbitrum Testnet',
-  [ChainId.BSC]: 'BNB Chain',
-  [ChainId.BSC_TESTNET]: 'BNB Chain Testnet',
+  [ChainId.BSC]: 'BSC',
+  [ChainId.BSC_TESTNET]: 'BSC Testnet',
   [ChainId.MOONBEAM_TESTNET]: 'Moonbase',
   [ChainId.AVALANCHE]: 'Avalanche',
   [ChainId.AVALANCHE_TESTNET]: 'Fuji',
@@ -82,4 +93,10 @@ export const NETWORK_LABEL: { [chainId in ChainId]?: string } = {
   [ChainId.MOONRIVER]: 'Moonriver',
   [ChainId.FUSE]: 'Fuse',
   [ChainId.TELOS]: 'Telos EVM',
+  [ChainId.MOONBEAM]: 'Moonbeam',
+  [ChainId.OPTIMISM]: 'Optimism',
+  [ChainId.KAVA]: 'Kava',
+  [ChainId.METIS]: 'Metis',
+  [ChainId.ARBITRUM_NOVA]: 'Arbitrum Nova',
+  [ChainId.BOBA_AVAX]: 'Boba Avax',
 }
