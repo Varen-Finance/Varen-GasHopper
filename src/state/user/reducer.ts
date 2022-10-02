@@ -1,5 +1,4 @@
 import { DEFAULT_ARCHER_ETH_TIP, DEFAULT_ARCHER_GAS_ESTIMATE, DEFAULT_ARCHER_GAS_PRICES } from '../../config/archer'
-import { DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
 import {
   SerializedPair,
   SerializedToken,
@@ -15,10 +14,8 @@ import {
   updateUserArcherTipManualOverride,
   updateUserArcherUseRelay,
   updateUserDarkMode,
-  updateUserDeadline,
   updateUserExpertMode,
   updateUserSingleHopOnly,
-  updateUserSlippageTolerance,
 } from './actions'
 
 import { createReducer } from '@reduxjs/toolkit'
@@ -36,12 +33,6 @@ export interface UserState {
   userExpertMode: boolean
 
   userSingleHopOnly: boolean // only allow swaps on direct pairs
-
-  // user defined slippage tolerance in bips, used in all txns
-  userSlippageTolerance: number | 'auto'
-
-  // deadline set by user in minutes, used in all txns
-  userDeadline: number
 
   tokens: {
     [chainId: number]: {
@@ -75,8 +66,6 @@ export const initialState: UserState = {
   matchesDarkMode: false,
   userExpertMode: false,
   userSingleHopOnly: false,
-  userSlippageTolerance: INITIAL_ALLOWED_SLIPPAGE,
-  userDeadline: DEFAULT_DEADLINE_FROM_NOW,
   tokens: {},
   pairs: {},
   timestamp: currentTimestamp(),
@@ -93,15 +82,6 @@ export default createReducer(initialState, (builder) =>
     .addCase(updateVersion, (state) => {
       // slippage isnt being tracked in local storage, reset to default
       // noinspection SuspiciousTypeOfGuard
-      if (typeof state.userSlippageTolerance !== 'number') {
-        state.userSlippageTolerance = INITIAL_ALLOWED_SLIPPAGE
-      }
-
-      // deadline isnt being tracked in local storage, reset to default
-      // noinspection SuspiciousTypeOfGuard
-      if (typeof state.userDeadline !== 'number') {
-        state.userDeadline = DEFAULT_DEADLINE_FROM_NOW
-      }
 
       state.lastUpdateVersionTimestamp = currentTimestamp()
     })
@@ -115,14 +95,6 @@ export default createReducer(initialState, (builder) =>
     })
     .addCase(updateUserExpertMode, (state, action) => {
       state.userExpertMode = action.payload.userExpertMode
-      state.timestamp = currentTimestamp()
-    })
-    .addCase(updateUserSlippageTolerance, (state, action) => {
-      state.userSlippageTolerance = action.payload.userSlippageTolerance
-      state.timestamp = currentTimestamp()
-    })
-    .addCase(updateUserDeadline, (state, action) => {
-      state.userDeadline = action.payload.userDeadline
       state.timestamp = currentTimestamp()
     })
     .addCase(updateUserSingleHopOnly, (state, action) => {

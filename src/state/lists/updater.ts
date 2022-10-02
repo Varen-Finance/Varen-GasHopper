@@ -1,24 +1,15 @@
 import { VersionUpgrade, getVersionUpgrade, minVersionBump } from '@uniswap/token-lists'
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 
-import { UNSUPPORTED_LIST_URLS } from '../../config/token-lists'
 import { acceptListUpdate } from './actions'
-import { useActiveListUrls } from './hooks'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useAllLists } from './hooks'
 import { useAppDispatch } from '../hooks'
-import { useFetchListCallback } from '../../hooks/useFetchListCallback'
-import useInterval from '../../hooks/useInterval'
-import useIsWindowVisible from '../../hooks/useIsWindowVisible'
 
 export default function Updater(): null {
-  const { library } = useActiveWeb3React()
   const dispatch = useAppDispatch()
-  const isWindowVisible = useIsWindowVisible()
 
   // get all loaded lists, and the active urls
   const lists = useAllLists()
-  const activeListUrls = useActiveListUrls()
 
   // disable remote list fetching for now
   //
@@ -81,7 +72,7 @@ export default function Updater(): null {
         }
       }
     })
-  }, [dispatch, lists, activeListUrls])
+  }, [dispatch, lists])
 
   return null
 }

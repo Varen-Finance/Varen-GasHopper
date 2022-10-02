@@ -5,7 +5,6 @@ import ERC20_ABI from '../../constants/abis/erc20.json'
 import { Interface } from '@ethersproject/abi'
 import { isAddress } from '../../functions'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
-import { useAllTokens } from '../../hooks/Tokens'
 import { useMemo } from 'react'
 import { useMulticall2Contract } from '../../hooks'
 import { TokenBalancesMap } from './types'
@@ -138,12 +137,4 @@ export function useCurrencyBalances(
 
 export function useCurrencyBalance(account?: string, currency?: Currency): CurrencyAmount<Currency> | undefined {
   return useCurrencyBalances(account, [currency])[0]
-}
-
-// mimics useAllBalances
-export function useAllTokenBalances(): TokenBalancesMap {
-  const { account, chainId } = useActiveWeb3React()
-  const allTokens = useAllTokens(chainId)
-  const allTokensArray = useMemo(() => Object.values(allTokens ?? {}), [allTokens])
-  return useTokenBalances(account ?? undefined, allTokensArray)
 }
