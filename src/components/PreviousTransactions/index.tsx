@@ -24,7 +24,7 @@ const FundingCard = ({ account }: Props) => {
   const [allQuotes, setAllQuotes] = useState<Quote[]>([])
 
   const getAllQuotes = async () => {
-    const max = 50
+    const max = 20
     const allNewQuotes = await useAllQuotes(account)
 
     allNewQuotes.sort((a, b) => {

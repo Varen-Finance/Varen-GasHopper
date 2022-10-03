@@ -49,8 +49,8 @@ export default function Home() {
       newQuote.outgoing.every((item) => networks.indexOf(item) > -1)
     ) {
       setQuote(newQuote)
+      setReady(true)
     }
-    setReady(true)
   }
 
   const acceptQuote = async () => {
@@ -291,9 +291,9 @@ export default function Home() {
                     onClick={() => {
                       changeNetworks(key)
                     }}
-                    disabled={isActive && networks.length === 1}
+                    disabled={(isActive && networks.length === 1) || !ready}
                     className={classNames(
-                      'flex items-center gap-4 w-full px-2 py-2 rounded border mr-2 w-[48px]',
+                      'flex items-center px-2 py-2 rounded border mr-2 w-[48px]',
                       isActive ? 'bg-varen-blue' : 'bg-varen-darkest-blue hover:bg-varen-dark-blue',
                       isActive ? 'border-varen-blue hover:border-varen-darkest-blue' : 'border-varen-blue',
                       'disabled:hover:border-varen-blue'
