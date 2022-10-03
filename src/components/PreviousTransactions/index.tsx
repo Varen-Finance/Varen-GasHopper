@@ -1,5 +1,5 @@
 import { classNames } from 'app/functions'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Typography from '../Typography'
 import Image from 'next/image'
@@ -20,7 +20,7 @@ interface Props {
 
 const FundingCard = ({ account }: Props) => {
   const { i18n } = useLingui()
-  const [intervalId, setIntervalId] = useState<number>(0)
+  const interval: any = useRef()
   const [allQuotes, setAllQuotes] = useState<Quote[]>([])
 
   const getAllQuotes = async () => {
@@ -49,20 +49,17 @@ const FundingCard = ({ account }: Props) => {
   }
 
   useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId)
-      setIntervalId(0)
-    }
+    clearInterval(interval.current)
 
     if (account) {
       getAllQuotes()
-      const newIntervalId = setInterval(() => {
+
+      interval.current = setInterval(() => {
         getAllQuotes()
       }, 3000)
-      setIntervalId(Number(newIntervalId))
     }
 
-    return () => clearInterval(intervalId)
+    return () => clearInterval(interval.current)
   }, [account])
 
   return account && allQuotes.length > 0 ? (

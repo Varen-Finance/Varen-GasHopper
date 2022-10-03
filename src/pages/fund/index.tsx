@@ -9,8 +9,8 @@ import Web3Network from 'app/components/Web3Network'
 import { ACTIVATED_NETWORKS, FAUCET_ADDRESS, SUPPORTED_NETWORKS } from 'app/constants'
 import { useActiveWeb3React } from 'app/services/web3'
 import { ChainId } from '@sushiswap/core-sdk'
-import { NETWORK_ICON, NETWORK_LABEL } from 'app/config/networks'
-import { useEffect, useState } from 'react'
+import { NETWORK_ICON } from 'app/config/networks'
+import { useEffect, useRef, useState } from 'react'
 import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus } from 'app/hooks'
 import Loader from 'app/components/Loader'
 import Button from 'app/components/Button'
@@ -20,6 +20,7 @@ import Dots from 'app/components/Dots'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ethers } from 'ethers'
 import PreviousTransactions from 'app/components/PreviousTransactions'
+import { useETHBalances } from 'app/state/wallet/hooks'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -30,17 +31,20 @@ export default function Home() {
   const [nativeCurrency, setNativeCurrency] = useState<string>(
     SUPPORTED_NETWORKS[ChainId.ETHEREUM].nativeCurrency.symbol
   )
-  const [intervalId, setIntervalId] = useState<number>(0)
   const [accepted, setAccepted] = useState<boolean>(false)
   const [waiting, setWaiting] = useState<boolean>(false)
   const [sent, setSent] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
+
+  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
+  const interval: any = useRef()
 
   const calculateGasMargin = (value: BigNumber): BigNumber => {
     return value.mul(BigNumber.from(10000 + 2000)).div(BigNumber.from(10000))
   }
 
   const getQuote = async () => {
+    setError('')
     setAccepted(false)
     setReady(false)
     const newQuote = await useGetQuote(account, chainId, networks)
@@ -49,6 +53,13 @@ export default function Home() {
       newQuote.outgoing.every((item) => networks.indexOf(item) > -1)
     ) {
       setQuote(newQuote)
+      if (userEthBalance && newQuote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
+        console.log(userEthBalance?.toSignificant(4), newQuote.incomming_rate, newQuote)
+        setError(
+          i18n._(t`Your ${SUPPORTED_NETWORKS[newQuote.incomming].nativeCurrency.symbol} balance is insufficient`)
+        )
+      }
+
       setReady(true)
     }
   }
@@ -57,7 +68,7 @@ export default function Home() {
     if (account && quote && quote.id) {
       const acceptedQuote = await useAcceptQuote(quote.id, account)
       if (acceptedQuote === 'accepted 1 contract(s)') {
-        clearInterval(intervalId)
+        clearInterval(interval.current)
         setAccepted(true)
       } else {
         getQuote()
@@ -140,8 +151,7 @@ export default function Home() {
   }
 
   const resetState = () => {
-    clearInterval(intervalId)
-    setIntervalId(0)
+    clearInterval(interval.current)
     setError('')
     setWaiting(false)
     setSent(false)
@@ -167,39 +177,25 @@ export default function Home() {
   }, [networks])
 
   useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId)
-      setIntervalId(0)
-    }
+    clearInterval(interval.current)
 
-    const newIntervalId = setInterval(() => {
+    interval.current = setInterval(() => {
       if (networks && networks.length > 0) getQuote()
     }, 60000)
-    setIntervalId(Number(newIntervalId))
 
-    return () => clearInterval(intervalId)
+    return () => clearInterval(interval.current)
   }, [networks])
 
   useEffect(() => {
-    if (error !== '') {
-      console.error(error)
-    }
-  })
-
-  useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId)
-      setIntervalId(0)
-    }
+    clearInterval(interval.current)
 
     if (sent) {
-      const newIntervalId = setInterval(() => {
+      interval.current = setInterval(() => {
         updateQuoteStatus()
       }, 60000)
-      setIntervalId(Number(newIntervalId))
     }
 
-    return () => clearInterval(intervalId)
+    return () => clearInterval(interval.current)
   }, [sent])
 
   return (
@@ -315,64 +311,80 @@ export default function Home() {
       </section>
       <section className={classNames('flex w-full flex-wrap', 'md:flex-nowrap md:justify-between')}>
         <div className={classNames('w-full mt-4 order-2', 'md:w-2/5 md:order-1')}>
-          {account ? (
+          {error !== '' ? (
+            <Button
+              onClick={(e) => {
+                e.preventDefault()
+              }}
+              disabled={true}
+              variant="outlined"
+              color="red"
+              className="flex justify-center w-full text-white"
+            >
+              {error}
+            </Button>
+          ) : (
             <>
-              {accepted ? (
+              {account ? (
                 <>
-                  {sent ? (
+                  {accepted ? (
+                    <>
+                      {sent ? (
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault()
+                          }}
+                          disabled={true}
+                          variant="outlined"
+                          color="blue"
+                          className="flex justify-center w-full text-white"
+                        >
+                          <Dots>{i18n._(t`Waiting for the transactions to be completed`)}</Dots>
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            setWaiting(true)
+                            sendFunds()
+                          }}
+                          disabled={waiting}
+                          variant="outlined"
+                          color="blue"
+                          className="flex justify-center w-full text-white"
+                        >
+                          {waiting ? (
+                            <Dots>{i18n._(t`Please confirm the transaction`)}</Dots>
+                          ) : (
+                            i18n._(t`Send ${nativeCurrency}`)
+                          )}
+                        </Button>
+                      )}
+                    </>
+                  ) : (
                     <Button
                       onClick={(e) => {
                         e.preventDefault()
+                        if (ready && quote) {
+                          acceptQuote()
+                        }
                       }}
-                      disabled={true}
+                      disabled={!ready}
                       variant="outlined"
                       color="blue"
                       className="flex justify-center w-full text-white"
                     >
-                      <Dots>{i18n._(t`Waiting for the transactions to be completed`)}</Dots>
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() => {
-                        setWaiting(true)
-                        sendFunds()
-                      }}
-                      disabled={waiting}
-                      variant="outlined"
-                      color="blue"
-                      className="flex justify-center w-full text-white"
-                    >
-                      {waiting ? (
-                        <Dots>{i18n._(t`Please confirm the transaction`)}</Dots>
-                      ) : (
-                        i18n._(t`Send ${nativeCurrency}`)
-                      )}
+                      {ready ? i18n._(t`Accept Rate`) : <Dots>{i18n._(t`Loading Rate`)}</Dots>}
                     </Button>
                   )}
                 </>
               ) : (
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    if (ready && quote) {
-                      acceptQuote()
-                    }
-                  }}
-                  disabled={!ready}
-                  variant="outlined"
-                  color="blue"
-                  className="flex justify-center w-full text-white"
-                >
-                  {ready ? i18n._(t`Accept Rate`) : <Dots>{i18n._(t`Loading Rate`)}</Dots>}
-                </Button>
+                <Web3Connect
+                  style={{ paddingTop: '8px', paddingBottom: '8px' }}
+                  color="gray"
+                  className="w-full text-white"
+                />
               )}
             </>
-          ) : (
-            <Web3Connect
-              style={{ paddingTop: '8px', paddingBottom: '8px' }}
-              color="gray"
-              className="w-full text-white"
-            />
           )}
         </div>
         {account && ready && quote && quote.outgoing_rates && (

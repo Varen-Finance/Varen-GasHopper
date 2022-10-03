@@ -21,8 +21,8 @@ const FILLED = {
 
 const OUTLINED = {
   default: 'bg-transparent opacity-80 hover:opacity-100',
-  red: 'bg-red bg-opacity-20 outline-red rounded text-red hover:bg-opacity-40 disabled:bg-opacity-20',
-  blue: 'bg-varen-blue outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20',
+  red: 'bg-red outline-red rounded text-white disabled:text-white',
+  blue: 'bg-varen-blue outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20 disabled:text-opacity-50',
   pink: 'bg-pink bg-opacity-20 outline-pink rounded text-pink hover:bg-opacity-40 disabled:bg-opacity-20',
   gray: 'bg-dark800 border border-blue rounded text-white hover:bg-varen-dark-blue disabled:opacity-50 disabled:bg-dark800',
   green: 'bg-green bg-opacity-20 border border-green rounded text-green hover:bg-opacity-40 disabled:bg-opacity-20',
@@ -72,7 +72,7 @@ function Button({
       className={classNames(
         VARIANT[variant][color],
         variant !== 'empty' && SIZE[size],
-        'rounded disabled:cursor-not-allowed focus:outline-none disabled:text-opacity-50',
+        'rounded disabled:cursor-not-allowed focus:outline-none',
         // 'rounded focus:outline-none focus:ring disabled:opacity-50 disabled:cursor-not-allowed font-medium',
         className
       )}
