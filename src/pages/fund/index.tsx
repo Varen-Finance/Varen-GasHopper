@@ -1,6 +1,5 @@
 import Container from '../../components/Container'
 import Head from 'next/head'
-import DoubleGlowShadow from 'app/components/DoubleGlowShadow'
 import { classNames, shortenAddress } from 'app/functions'
 import Image from 'next/image'
 import Typography from 'app/components/Typography'
@@ -20,6 +19,7 @@ import FundingCard from 'app/components/FundingCard'
 import Dots from 'app/components/Dots'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ethers } from 'ethers'
+import PreviousTransactions from 'app/components/PreviousTransactions'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -195,7 +195,7 @@ export default function Home() {
     if (sent) {
       const newIntervalId = setInterval(() => {
         updateQuoteStatus()
-      }, 3000)
+      }, 60000)
       setIntervalId(Number(newIntervalId))
     }
 
@@ -397,6 +397,7 @@ export default function Home() {
           </div>
         )}
       </section>
+      <PreviousTransactions account={account} />
     </Container>
   )
 }
