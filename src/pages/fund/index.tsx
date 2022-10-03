@@ -155,7 +155,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (userEthBalance && quote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
+    if (quote && userEthBalance && quote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
       setError(i18n._(t`Your ${SUPPORTED_NETWORKS[quote.incomming].nativeCurrency.symbol} balance is insufficient`))
     }
   }, [userEthBalance, quote])
