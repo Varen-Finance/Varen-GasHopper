@@ -1,7 +1,7 @@
 import { ChainId, NATIVE } from '@sushiswap/core-sdk'
 import React from 'react'
 
-import { ACTIVATED_NETWORKS } from '../../constants'
+import { ACTIVATED_NETWORKS, SUPPORTED_NETWORKS } from '../../constants'
 import ExternalLink from '../ExternalLink'
 import Image from 'next/image'
 import LanguageSwitch from '../LanguageSwitch'
@@ -14,7 +14,7 @@ import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { useLingui } from '@lingui/react'
 import { NETWORK_ICON, NETWORK_LABEL } from '../../config/networks'
-import { SUPPORTED_NETWORKS } from '../../modals/NetworkModal'
+
 // @ts-ignore
 import cookie from 'cookie-cutter'
 import HeadlessUIModal from '../Modal/HeadlessUIModal'

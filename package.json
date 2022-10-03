@@ -67,12 +67,12 @@
     "@sushiswap/chainlink-whitelist": "0.2.8",
     "@sushiswap/core": "^2.0.0-canary.1",
     "@sushiswap/core-sdk": "1.0.0-canary.138",
-    "@sushiswap/sdk": "^5.0.0-canary.116",
     "@sushiswap/kashi-sdk": "1.0.0-canary.80",
     "@sushiswap/limit-order-pair-list": "0.2.17",
     "@sushiswap/limit-order-sdk": "1.0.0-canary.89",
     "@sushiswap/miso": "1.0.0-canary.47",
     "@sushiswap/miso-sdk": "1.0.0-canary.78",
+    "@sushiswap/sdk": "^5.0.0-canary.116",
     "@sushiswap/trident": "^1.0.0-canary.38",
     "@sushiswap/trident-sdk": "1.0.0-canary.117",
     "@tailwindcss/jit": "^0.1.18",
@@ -200,5 +200,8 @@
     "not dead",
     "not op_mini all"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.27.2",
+    "ethers": "^5.7.1"
+  }
 }

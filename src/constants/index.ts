@@ -37,6 +37,8 @@ export const BLOCKCHAIN = {
   [ChainId.TELOS]: 'telos',
 }
 
+export const FAUCET_ADDRESS = '0x4Fe425C05DD4052d9ef446eCdf8b3D8fC50DEE15'
+
 export const SUPPORTED_NETWORKS: {
   [key: number]: {
     chainId: string
@@ -104,5 +106,16 @@ export const SUPPORTED_NETWORKS: {
     },
     rpcUrls: ['https://rpcapi.fantom.network'],
     blockExplorerUrls: ['https://ftmscan.com'],
+  },
+  [ChainId.AVALANCHE]: {
+    chainId: '0xa86a',
+    chainName: 'Avalance',
+    nativeCurrency: {
+      name: 'Avalance',
+      symbol: 'AVAX',
+      decimals: 18,
+    },
+    rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
+    blockExplorerUrls: ['https://snowtrace.io'],
   },
 }

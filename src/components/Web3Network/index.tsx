@@ -105,14 +105,13 @@ function Web3Network({ variant = 'base' }: Props): JSX.Element | null {
   if (!chainId || !library) return null
 
   const size = variant === 'base' ? 22 : 34
-  const buttonVariant = variant === 'base' ? 'outlined' : 'empty'
   const buttonClasses = variant === 'base' ? 'text-white' : 'text-xl'
 
   return (
     <Button
       id="network-select"
       onClick={toggleNetworkModal}
-      variant={buttonVariant}
+      variant="outlined"
       color="gray"
       className={buttonClasses}
       size="sm"

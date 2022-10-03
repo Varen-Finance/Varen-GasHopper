@@ -1,19 +1,4 @@
 import NextImage from 'next/image'
-import { cloudinaryLoader } from '../../functions/cloudinary'
-
-// Cloudflare Loader
-const normalize = (src) => {
-  return src[0] === '/' ? src.slice(1) : src
-}
-
-const cloudFlareLoader = ({ src, width, quality }) => {
-  const params = [`width=${width}`]
-  if (quality) {
-    params.push(`quality=${quality}`)
-  }
-  const paramsString = params.join(',')
-  return `/cdn-cgi/image/${paramsString}/${normalize(src)}`
-}
 
 const shimmer = (w, h) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

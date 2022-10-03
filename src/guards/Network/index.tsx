@@ -6,11 +6,11 @@ import { ChainId } from '@sushiswap/core-sdk'
 import HeadlessUIModal from '../../components/Modal/HeadlessUIModal'
 import Image from 'next/image'
 import NavLink from '../../components/NavLink'
-import { SUPPORTED_NETWORKS } from '../../modals/NetworkModal'
 import Typography from '../../components/Typography'
 import cookie from 'cookie-cutter'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks'
+import { SUPPORTED_NETWORKS } from 'app/constants'
 
 interface NetworkGuardProps {
   networks: ChainId[]

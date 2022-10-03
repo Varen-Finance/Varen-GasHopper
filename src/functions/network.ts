@@ -1,5 +1,5 @@
 import { ExternalProvider } from '@ethersproject/providers'
-import { SUPPORTED_NETWORKS } from 'app/modals/NetworkModal'
+import { SUPPORTED_NETWORKS } from 'app/constants'
 
 interface SwitchNetworkArguments {
   provider: ExternalProvider
