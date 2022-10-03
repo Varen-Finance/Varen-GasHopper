@@ -53,13 +53,6 @@ export default function Home() {
       newQuote.outgoing.every((item) => networks.indexOf(item) > -1)
     ) {
       setQuote(newQuote)
-      if (userEthBalance && newQuote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
-        console.log(userEthBalance?.toSignificant(4), newQuote.incomming_rate, newQuote)
-        setError(
-          i18n._(t`Your ${SUPPORTED_NETWORKS[newQuote.incomming].nativeCurrency.symbol} balance is insufficient`)
-        )
-      }
-
       setReady(true)
     }
   }
@@ -160,6 +153,12 @@ export default function Home() {
     setNativeCurrency(SUPPORTED_NETWORKS[chainId ? chainId : ChainId.ETHEREUM].nativeCurrency.symbol)
     setNetworks([chainId === ChainId.ETHEREUM ? ChainId.MATIC : ChainId.ETHEREUM])
   }
+
+  useEffect(() => {
+    if (userEthBalance && quote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
+      setError(i18n._(t`Your ${SUPPORTED_NETWORKS[quote.incomming].nativeCurrency.symbol} balance is insufficient`))
+    }
+  }, [userEthBalance, quote])
 
   useEffect(() => {
     resetState()
