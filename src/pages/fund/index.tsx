@@ -12,7 +12,7 @@ import { useActiveWeb3React } from 'app/services/web3'
 import { ChainId } from '@sushiswap/core-sdk'
 import { NETWORK_ICON, NETWORK_LABEL } from 'app/config/networks'
 import { useEffect, useState } from 'react'
-import { useAcceptQuote, useGetQuote } from 'app/hooks'
+import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus } from 'app/hooks'
 import Loader from 'app/components/Loader'
 import Button from 'app/components/Button'
 import Web3Connect from 'app/components/Web3Connect'
@@ -43,21 +43,33 @@ export default function Home() {
   const getQuote = async () => {
     setAccepted(false)
     setReady(false)
-    const quote = await useGetQuote(account, chainId, networks)
-    if (networks.length === quote.outgoing.length && quote.outgoing.every((item) => networks.indexOf(item) > -1)) {
-      setQuote(quote)
+    const newQuote = await useGetQuote(account, chainId, networks)
+    if (
+      networks.length === newQuote.outgoing.length &&
+      newQuote.outgoing.every((item) => networks.indexOf(item) > -1)
+    ) {
+      setQuote(newQuote)
     }
     setReady(true)
   }
 
   const acceptQuote = async () => {
-    if (quote && quote.id) {
+    if (account && quote && quote.id) {
       const acceptedQuote = await useAcceptQuote(quote.id, account)
       if (acceptedQuote === 'accepted 1 contract(s)') {
         clearInterval(intervalId)
         setAccepted(true)
       } else {
         getQuote()
+      }
+    }
+  }
+
+  const updateQuoteStatus = async () => {
+    if (account && quote && quote.id) {
+      const updatedQuote = await useUpdateQuoteStatus(quote.id, account)
+      if (updatedQuote.send) {
+        resetState()
       }
     }
   }
@@ -173,6 +185,22 @@ export default function Home() {
       console.error(error)
     }
   })
+
+  useEffect(() => {
+    if (intervalId) {
+      clearInterval(intervalId)
+      setIntervalId(0)
+    }
+
+    if (sent) {
+      const newIntervalId = setInterval(() => {
+        updateQuoteStatus()
+      }, 3000)
+      setIntervalId(Number(newIntervalId))
+    }
+
+    return () => clearInterval(intervalId)
+  }, [sent])
 
   return (
     <Container id="home-page" className="p-4 md:py-10">
@@ -314,7 +342,11 @@ export default function Home() {
                       color="blue"
                       className="flex justify-center w-full text-white"
                     >
-                      {i18n._(t`Send ${nativeCurrency}`)}
+                      {waiting ? (
+                        <Dots>{i18n._(t`Please confirm the transaction`)}</Dots>
+                      ) : (
+                        i18n._(t`Send ${nativeCurrency}`)
+                      )}
                     </Button>
                   )}
                 </>
