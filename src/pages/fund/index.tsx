@@ -296,7 +296,7 @@ export default function Home() {
                       'flex items-center px-2 py-2 rounded border mr-2 w-[48px]',
                       isActive ? 'bg-varen-blue' : 'bg-varen-darkest-blue hover:bg-varen-dark-blue',
                       isActive ? 'border-varen-blue hover:border-varen-darkest-blue' : 'border-varen-blue',
-                      'disabled:hover:border-varen-blue'
+                      'disabled:hover:border-varen-blue disabled:opacity-60'
                     )}
                   >
                     <Image
