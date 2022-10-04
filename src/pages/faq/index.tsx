@@ -96,11 +96,11 @@ export default function Faq() {
           </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`Why is there a VAREN DAO Treasury element in my rate?`)}
+              {i18n._(t`Why is there a 'Varen DAO Treasury' element in my rate?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Gashopper charges a 10% fee on every exchange. This fee goes into the Gashopper funding wallet and ultimately into VAREN DAO treasury as protocol owned liquidity.`
+                t`Gashopper charges a 10% fee on every exchange. This fee goes into the Gashopper funding wallet and ultimately into Varen DAO Treasury as protocol owned liquidity.`
               )}
             </Typography>
           </div>
