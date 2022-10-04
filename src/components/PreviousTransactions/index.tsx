@@ -76,7 +76,6 @@ const FundingCard = ({ account }: Props) => {
           })
         )
         const difference = now.diff(created, 'minutes')
-        const minutes = 60 - difference
         return (
           <div
             key={index}
@@ -130,7 +129,7 @@ const FundingCard = ({ account }: Props) => {
                         {`${quote.outgoing_rates[oIndex]} ${oNative}`}
                       </Typography>
                     </div>
-                    {quote.send ? (
+                    {quote.send && quote.send_tx[oIndex].length > 1 ? (
                       <Typography variant="sm" className={classNames('pt-1 pb-2', 'md:pt-0 md:pb-0 md:pl-2')}>
                         <ExternalLink
                           href={`${SUPPORTED_NETWORKS[oCID].blockExplorerUrls[0]}/tx/${quote.send_tx[oIndex]}`}

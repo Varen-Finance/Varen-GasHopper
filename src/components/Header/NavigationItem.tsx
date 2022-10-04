@@ -58,7 +58,7 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Popover.Panel className="z-10 w-full absolute w-40 translate-y-[-8px] translate-x-[-8px]">
+            <Popover.Panel className="z-10 absolute w-40 translate-y-[-8px] translate-x-[-8px]">
               <div className="absolute left-0 w-full p-2 mt-8 origin-top-right divide-y rounded shadow-lg divide-dark-600 bg-varen-darkest-blue focus:outline-none">
                 {(node as MenuItemNode).items.map((leaf) => (
                   <Link key={leaf.key} href={leaf.link}>
