@@ -63,7 +63,7 @@ export const SUPPORTED_NETWORKS: {
     },
     rpcUrls: ['https://mainnet.infura.io/v3'],
     blockExplorerUrls: ['https://etherscan.com', 'https://api.etherscan.io'],
-    blockExplorerAPIkey: 'PBGGBQN7KVWJXUD9EW5QQWE6HM2WX1PWY3',
+    blockExplorerAPIkey: 'GEBJRTC59MB6F9QM77FT9K4HUTVYVGFJIM',
   },
   [ChainId.BSC]: {
     chainId: '0x38',
