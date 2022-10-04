@@ -8,7 +8,6 @@ import { SUPPORTED_NETWORKS } from 'app/constants'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useAllQuotes } from 'app/hooks'
-import { map } from 'lodash'
 import { ChainId } from '@sushiswap/core-sdk'
 import ExternalLink from '../ExternalLink'
 import moment from 'moment'
@@ -134,7 +133,7 @@ const FundingCard = ({ account }: Props) => {
                     {quote.send ? (
                       <Typography variant="sm" className={classNames('pt-1 pb-2', 'md:pt-0 md:pb-0 md:pl-2')}>
                         <ExternalLink
-                          href={`${SUPPORTED_NETWORKS[oCID].blockExplorerUrls}/tx/${quote.send_tx[oIndex]}`}
+                          href={`${SUPPORTED_NETWORKS[oCID].blockExplorerUrls[0]}/tx/${quote.send_tx[oIndex]}`}
                         >
                           {i18n._(t`Funds sent`)}
                         </ExternalLink>

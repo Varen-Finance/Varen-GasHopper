@@ -11,7 +11,7 @@ import { useActiveWeb3React } from 'app/services/web3'
 import { ChainId } from '@sushiswap/core-sdk'
 import { NETWORK_ICON } from 'app/config/networks'
 import { useEffect, useRef, useState } from 'react'
-import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus } from 'app/hooks'
+import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus, useWalletBalance } from 'app/hooks'
 import Loader from 'app/components/Loader'
 import Button from 'app/components/Button'
 import Web3Connect from 'app/components/Web3Connect'
@@ -21,6 +21,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { ethers } from 'ethers'
 import PreviousTransactions from 'app/components/PreviousTransactions'
 import { useETHBalances } from 'app/state/wallet/hooks'
+import QuestionHelper from 'app/components/QuestionHelper'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -28,6 +29,7 @@ export default function Home() {
   const [networks, setNetworks] = useState<ChainId[] | undefined>()
   const [quote, setQuote] = useState<Quote | undefined>()
   const [ready, setReady] = useState<boolean>(false)
+  const [faucetBalances, setFaucetBalances] = useState({})
   const [nativeCurrency, setNativeCurrency] = useState<string>(
     SUPPORTED_NETWORKS[ChainId.ETHEREUM].nativeCurrency.symbol
   )
@@ -76,6 +78,19 @@ export default function Home() {
         resetState()
       }
     }
+  }
+
+  const updateWalletBalances = async () => {
+    let initialQuery = true
+    const walletBalances = {}
+    ACTIVATED_NETWORKS.forEach(async (key: ChainId, i: number) => {
+      if (!faucetBalances[key]) {
+        walletBalances[key] = await useWalletBalance(key)
+      } else {
+        initialQuery = false
+      }
+    })
+    if (initialQuery) setFaucetBalances(walletBalances)
   }
 
   const changeNetworks = (cID: ChainId) => {
@@ -196,6 +211,21 @@ export default function Home() {
 
     return () => clearInterval(interval.current)
   }, [sent])
+
+  useEffect(() => {
+    updateWalletBalances()
+  }, [quote])
+
+  useEffect(() => {
+    if (quote && quote.outgoing) {
+      quote.outgoing.forEach((oCID: ChainId, index: number) => {
+        if (faucetBalances[oCID] < quote.outgoing_rates[index]) {
+          const network = SUPPORTED_NETWORKS[oCID].nativeCurrency.name
+          setError(i18n._(t`Gashopper wallet balance on ${network} insuficcient`))
+        }
+      })
+    }
+  }, [faucetBalances, quote])
 
   return (
     <Container id="home-page" className="p-4 md:py-10">

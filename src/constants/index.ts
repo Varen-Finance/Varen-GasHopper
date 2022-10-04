@@ -50,6 +50,7 @@ export const SUPPORTED_NETWORKS: {
     }
     rpcUrls: string[]
     blockExplorerUrls: string[]
+    blockExplorerAPIkey: string
   }
 } = {
   [ChainId.ETHEREUM]: {
@@ -61,7 +62,8 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://mainnet.infura.io/v3'],
-    blockExplorerUrls: ['https://etherscan.com'],
+    blockExplorerUrls: ['https://etherscan.com', 'https://api.etherscan.io'],
+    blockExplorerAPIkey: 'PBGGBQN7KVWJXUD9EW5QQWE6HM2WX1PWY3',
   },
   [ChainId.BSC]: {
     chainId: '0x38',
@@ -72,7 +74,8 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://bsc-dataseed.binance.org'],
-    blockExplorerUrls: ['https://bscscan.com'],
+    blockExplorerUrls: ['https://bscscan.com', 'https://api.bscscan.com'],
+    blockExplorerAPIkey: 'IR4XKJTR4H258VFIW99TYCC3KK7AP7MJS9',
   },
   [ChainId.MATIC]: {
     chainId: '0x89',
@@ -83,7 +86,8 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://polygon-mainnet.infura.io/v3'],
-    blockExplorerUrls: ['https://polygonscan.com'],
+    blockExplorerUrls: ['https://polygonscan.com', 'https://api.polygonscan.com'],
+    blockExplorerAPIkey: 'NEHJVRRCJYN6S36QQ17EINYSV84UWJ56BR',
   },
   [ChainId.ARBITRUM]: {
     chainId: '0xA4B1',
@@ -94,7 +98,8 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://arbitrum-mainnet.infura.io/v3'],
-    blockExplorerUrls: ['https://arbiscan.io'],
+    blockExplorerUrls: ['https://arbiscan.io', 'https://api.arbiscan.io'],
+    blockExplorerAPIkey: 'ZZKZFFS5BZ9G4FKYSVHT818E8PNIWT788S',
   },
   [ChainId.FANTOM]: {
     chainId: '0xfa',
@@ -105,7 +110,8 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://rpcapi.fantom.network'],
-    blockExplorerUrls: ['https://ftmscan.com'],
+    blockExplorerUrls: ['https://ftmscan.com', 'https://api.ftmscan.com'],
+    blockExplorerAPIkey: 'T3N2VPPDTD3C8U52S1XINH9RN1WZFKVEQ3',
   },
   [ChainId.AVALANCHE]: {
     chainId: '0xa86a',
@@ -116,6 +122,7 @@ export const SUPPORTED_NETWORKS: {
       decimals: 18,
     },
     rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
-    blockExplorerUrls: ['https://snowtrace.io'],
+    blockExplorerUrls: ['https://snowtrace.io', 'https://api.snowtrace.io'],
+    blockExplorerAPIkey: 'ISGK8TRRVD7ZSFHT4DJB2QJ1XG7JF97FUT',
   },
 }
