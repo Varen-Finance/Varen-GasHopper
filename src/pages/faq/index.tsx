@@ -5,6 +5,7 @@ import Typography from 'app/components/Typography'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { FAUCET_ADDRESS } from 'app/constants'
+import ExternalLink from 'app/components/ExternalLink'
 
 export default function Faq() {
   const { i18n } = useLingui()
@@ -25,7 +26,6 @@ export default function Faq() {
           <Typography weight={700} variant="h2" className="w-full mt-4 uppercase md:mt-10">
             {i18n._(t`FAQ`)}
           </Typography>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`What is Gashopper?`)}
@@ -36,7 +36,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`Why should I use Gashopper?`)}
@@ -47,7 +46,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`What does 'accept rate' mean?`)}
@@ -63,7 +61,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`I sent funds after rate expired. Are my funds lost?`)}
@@ -79,7 +76,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(
@@ -98,7 +94,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`Why is there a VAREN DAO Treasury element in my rate?`)}
@@ -109,7 +104,6 @@ export default function Faq() {
               )}
             </Typography>
           </div>
-
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`I can't agree on a rate, as the funding wallet balance is to low?`)}
@@ -121,11 +115,24 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`You can either wait for the balance to be replenished by other exchanges, or navigate to the Varen DAO Discord server and inform the DAO via the #support channel.r`
+                t`You can either wait for the balance to be replenished by other exchanges, or navigate to the Varen DAO Discord server and inform the DAO via the #support channel.`
               )}
             </Typography>
           </div>
-
+          <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
+            <Typography weight={700} variant="lg" className="w-full pt-2">
+              {i18n._(t`Where can I check the balances of the Gashopper wallet?`)}
+            </Typography>
+            <Typography variant="base" className="w-full text-secondary">
+              {i18n._(t`Gashopper uses the varen.eth ENS Domain.`)}
+            </Typography>
+            <Typography variant="base" className="text-secondary">
+              {i18n._(t`You can check the Balances of it`)}
+            </Typography>
+            <ExternalLink href="https://zapper.fi/account/varen.eth" className="ml-2">
+              {i18n._(t`here`)}
+            </ExternalLink>
+          </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
               {i18n._(t`I got an error using Gashopper. Where do I find help?`)}
