@@ -18,11 +18,14 @@ import { NETWORK_ICON, NETWORK_LABEL } from '../../config/networks'
 // @ts-ignore
 import cookie from 'cookie-cutter'
 import HeadlessUIModal from '../Modal/HeadlessUIModal'
+import useMenu from './useMenu'
+import { NavigationItem } from './NavigationItem'
 
 function AppBar(): JSX.Element {
   const { i18n } = useLingui()
   const { account, chainId, library } = useActiveWeb3React()
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
+  const menu = useMenu()
 
   // @ts-ignore
   const currentNetwork = `<span class="font-bold text-blue">${NETWORK_LABEL[chainId]}</span>`
@@ -31,9 +34,13 @@ function AppBar(): JSX.Element {
     <header className="relative z-50 flex-shrink-0 w-full">
       <Popover as="nav" className="z-10 w-full bg-transparent">
         <div className="p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <ExternalLink className="opacity-100" href="https://varen.finance" title={i18n._(t`About Varen`)}>
+          <div className="flex flex-wrap items-center md:justify-between md:flex-nowrap">
+            <div className="flex flex-wrap items-center md:flex-nowrap">
+              <ExternalLink
+                className="mb-4 opacity-100 md:mb-0 md:mr-10"
+                href="https://varen.finance"
+                title={i18n._(t`About Varen`)}
+              >
                 <Image
                   src="https://res.cloudinary.com/varen-finance/image/upload/v1664737320/gashopper-logo_ydtgsp.svg"
                   alt="Gashopper by Varen DAO"
@@ -41,8 +48,11 @@ function AppBar(): JSX.Element {
                   height={45}
                 />
               </ExternalLink>
+              {menu.map((node) => {
+                return <NavigationItem node={node} key={node.key} />
+              })}
             </div>
-            <div className="relative z-50 block md:hidden">
+            <div className="relative z-50 block mt-4 md:hidden">
               <LanguageSwitch />
             </div>
 
@@ -92,7 +102,7 @@ function AppBar(): JSX.Element {
           <div className={`grid gap-2 grid-cols-2`}>
             {ACTIVATED_NETWORKS.map((key: ChainId, idx: number) => (
               <button
-                className="w-full col-span-1 p-px rounded bg-varen-blue"
+                className="w-full col-span-1 rounded bg-varen-blue"
                 key={idx}
                 onClick={() => {
                   const params = SUPPORTED_NETWORKS[key]

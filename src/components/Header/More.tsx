@@ -106,7 +106,7 @@ export default function Menu() {
                     <ExternalLink
                       key={item.name}
                       href={item.href}
-                      className="px-3 py-1 -m-3 transition duration-150 ease-in-out rounded-md hover:bg-dark-800"
+                      className="px-3 py-1 -m-3 no-underline transition duration-150 ease-in-out rounded-md hover:bg-dark-800"
                     >
                       <div
                         className="flex space-x-6 text-base font-medium text-high-emphesis"
@@ -123,7 +123,7 @@ export default function Menu() {
                     <ExternalLink
                       key={item.name}
                       href={item.href}
-                      className="px-3 py-1 -m-3 transition duration-150 ease-in-out rounded-md hover:bg-dark-800"
+                      className="px-3 py-1 -m-3 no-underline transition duration-150 ease-in-out rounded-md hover:bg-dark-800"
                     >
                       <div
                         className="flex space-x-6 text-base font-medium text-high-emphesis"
