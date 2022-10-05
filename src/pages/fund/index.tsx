@@ -152,7 +152,7 @@ export default function Home() {
       })
       .catch((error) => {
         if (error?.code !== 4001) {
-          setError(i18n._(t`An error uccured: ${error.message}`))
+          setError(i18n._(t`An error occured: ${error.message}`))
         }
         setWaiting(false)
       })

@@ -32,7 +32,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Gashopper is a Muli-Chain-Faucet. It operates as a 'smart wallet' that has a middleware connected to it, which is listening to incoming transactions on the wallet.`
+                t`Gashopper is a Multi-Chain-Faucet. It operates as a 'smart wallet' that has a middleware connected to it, which is listening to incoming transactions on the wallet.`
               )}
             </Typography>
           </div>
@@ -52,7 +52,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`To avoid any exploid capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of Gashopper.`
+                t`To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of Gashopper.`
               )}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
@@ -106,7 +106,7 @@ export default function Faq() {
           </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`I can't agree on a rate, as the funding wallet balance is to low?`)}
+              {i18n._(t`I can't agree on a rate, as the funding wallet balance is too low?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
