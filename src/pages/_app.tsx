@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
       try {
         // Load messages from AWS, use q session param to get latest version from cache
         const res = await fetch(
-          `https://raw.githubusercontent.com/varenfinance/translations/master2/gashopper/${locale}.json`
+          `https://raw.githubusercontent.com/varenfinance/translations/master/gashopper/${locale}.json`
         )
         const remoteMessages = await res.json()
 
