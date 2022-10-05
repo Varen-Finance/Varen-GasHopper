@@ -19,7 +19,7 @@ export const ACTIVATED_NETWORKS = [
   ChainId.ETHEREUM,
   ChainId.MATIC,
   ChainId.BSC,
-  ChainId.ARBITRUM,
+  //ChainId.ARBITRUM,
   ChainId.AVALANCHE,
   ChainId.FANTOM,
 ]
@@ -89,18 +89,6 @@ export const SUPPORTED_NETWORKS: {
     blockExplorerUrls: ['https://polygonscan.com', 'https://api.polygonscan.com'],
     blockExplorerAPIkey: 'NEHJVRRCJYN6S36QQ17EINYSV84UWJ56BR',
   },
-  [ChainId.ARBITRUM]: {
-    chainId: '0xA4B1',
-    chainName: 'Arbitrum',
-    nativeCurrency: {
-      name: 'Ethereum',
-      symbol: 'ETH',
-      decimals: 18,
-    },
-    rpcUrls: ['https://arbitrum-mainnet.infura.io/v3'],
-    blockExplorerUrls: ['https://arbiscan.io', 'https://api.arbiscan.io'],
-    blockExplorerAPIkey: 'ZZKZFFS5BZ9G4FKYSVHT818E8PNIWT788S',
-  },
   [ChainId.FANTOM]: {
     chainId: '0xfa',
     chainName: 'Fantom',
@@ -124,5 +112,13 @@ export const SUPPORTED_NETWORKS: {
     rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
     blockExplorerUrls: ['https://snowtrace.io', 'https://api.snowtrace.io'],
     blockExplorerAPIkey: 'ISGK8TRRVD7ZSFHT4DJB2QJ1XG7JF97FUT',
+  },
+  [ChainId.ARBITRUM]: {
+    chainId: '0xA4B1',
+    chainName: 'Arbitrum',
+    nativeCurrency: { name: 'Ethereum', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://arbitrum-mainnet.infura.io/v3'],
+    blockExplorerUrls: ['https://arbiscan.io', 'https://api.arbiscan.io'],
+    blockExplorerAPIkey: 'ZZKZFFS5BZ9G4FKYSVHT818E8PNIWT788S',
   },
 }
