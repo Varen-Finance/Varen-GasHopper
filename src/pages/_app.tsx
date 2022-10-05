@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Gashopper | Multichain Faucet by Varen DAO</title>
+        <title>GasHopper | Multichain Faucet by Varen DAO</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"

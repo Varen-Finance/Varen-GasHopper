@@ -17,8 +17,8 @@ export default function Document() {
         <meta property="og:type" content="Website" />
         <meta name="twitter:image" content="https://gashopper.varen.finance/banner-application.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:title" content="Gashopper | Multichain Faucet by Varen DAO" />
-        <meta name="twitter:title" content="Gashopper | Multichain Faucet by Varen DAO" />
+        <meta property="og:title" content="GasHopper | Multichain Faucet by Varen DAO" />
+        <meta name="twitter:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta
           name="description"
           content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"

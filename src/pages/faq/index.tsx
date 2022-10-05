@@ -13,13 +13,13 @@ export default function Faq() {
   return (
     <Container id="faq-page" className="p-4 md:py-10">
       <Head>
-        <title>Gashopper | FAQ</title>
+        <title>GasHopper | FAQ</title>
         <meta name="fortmatic-site-verification" content="IYT2GS7WhWUUGBhE" />
-        <meta property="og:title" content="Gashopper | FAQ" />
-        <meta name="twitter:title" content="Gashopper | FAQ" />
-        <meta name="description" content="What is Gashopper?" />
-        <meta property="og:description" content="What is Gashopper?" />
-        <meta name="twitter:description" content="What is Gashopper?" />
+        <meta property="og:title" content="GasHopper | FAQ" />
+        <meta name="twitter:title" content="GasHopper | FAQ" />
+        <meta name="description" content="What is GasHopper?" />
+        <meta property="og:description" content="What is GasHopper?" />
+        <meta name="twitter:description" content="What is GasHopper?" />
       </Head>
       <section className={classNames('flex w-full flex-wrap', 'md:flex-nowrap md:justify-between mb-10')}>
         <div className={classNames('w-full flex flex-wrap')}>
@@ -28,21 +28,21 @@ export default function Faq() {
           </Typography>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`What is Gashopper?`)}
+              {i18n._(t`What is GasHopper?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Gashopper is a Multi-Chain-Faucet. It operates as a 'smart wallet' that has a middleware connected to it, which is listening to incoming transactions on the wallet.`
+                t`GasHopper is a Multi-Chain-Faucet. It operates as a 'smart wallet' that has a middleware connected to it, which is listening to incoming transactions on the wallet.`
               )}
             </Typography>
           </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`Why should I use Gashopper?`)}
+              {i18n._(t`Why should I use GasHopper?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Funding a wallet on a chain you never used before can be tricky. With Gashopper you can fund your EVM Wallet on all supported chains with only one transaction. Gashopper was designed to make onboarding to new chains easy.`
+                t`Funding a wallet on a chain you never used before can be tricky. With GasHopper you can fund your EVM Wallet on all supported chains with only one transaction. GasHopper was designed to make onboarding to new chains easy.`
               )}
             </Typography>
           </div>
@@ -52,7 +52,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of Gashopper.`
+                t`To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.`
               )}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
@@ -67,7 +67,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`No, your funds can not get lost on Gashopper, as the middleware is in full control of the wallet. If a rate did not get fullfilled by the middleware, it can be initiated manually by the Varen DAO.`
+                t`No, your funds can not get lost on GasHopper, as the middleware is in full control of the wallet. If a rate did not get fullfilled by the middleware, it can be initiated manually by the Varen DAO.`
               )}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
@@ -86,7 +86,7 @@ export default function Faq() {
               {i18n._(t`You could start over, or just send the funds of the selected source manually.`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
-              {i18n._(t`The wallet address of the Gashopper funding wallet is: ${FAUCET_ADDRESS}`)}
+              {i18n._(t`The wallet address of the GasHopper funding wallet is: ${FAUCET_ADDRESS}`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
@@ -100,7 +100,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Gashopper charges a 10% fee on every exchange. This fee goes into the Gashopper funding wallet and ultimately into Varen DAO Treasury as protocol owned liquidity.`
+                t`GasHopper charges a 10% fee on every exchange. This fee goes into the GasHopper funding wallet and ultimately into Varen DAO Treasury as protocol owned liquidity.`
               )}
             </Typography>
           </div>
@@ -110,7 +110,7 @@ export default function Faq() {
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(
-                t`Gashopper can only send funds from it's own wallet. If a wallet on a specific chain is empty or too low, the dApp prevents the exchange from happening.`
+                t`GasHopper can only send funds from it's own wallet. If a wallet on a specific chain is empty or too low, the dApp prevents the exchange from happening.`
               )}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
@@ -121,10 +121,10 @@ export default function Faq() {
           </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`Where can I check the balances of the Gashopper wallet?`)}
+              {i18n._(t`Where can I check the balances of the GasHopper wallet?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
-              {i18n._(t`Gashopper uses the varen.eth ENS Domain.`)}
+              {i18n._(t`GasHopper uses the varen.eth ENS Domain.`)}
             </Typography>
             <Typography variant="base" className="text-secondary">
               {i18n._(t`You can check the Balances of it`)}
@@ -135,7 +135,7 @@ export default function Faq() {
           </div>
           <div className="flex flex-wrap w-full px-4 py-2 mt-4 border rounded bg-varen-darkest-blue border-varen-blue">
             <Typography weight={700} variant="lg" className="w-full pt-2">
-              {i18n._(t`I got an error using Gashopper. Where do I find help?`)}
+              {i18n._(t`I got an error using GasHopper. Where do I find help?`)}
             </Typography>
             <Typography variant="base" className="w-full text-secondary">
               {i18n._(

@@ -221,7 +221,7 @@ export default function Home() {
       quote.outgoing.forEach((oCID: ChainId, index: number) => {
         if (faucetBalances[oCID] < quote.outgoing_rates[index]) {
           const network = SUPPORTED_NETWORKS[oCID].nativeCurrency.name
-          setError(i18n._(t`Gashopper wallet balance on ${network} insuficcient`))
+          setError(i18n._(t`GasHopper wallet balance on ${network} insuficcient`))
         }
       })
     }
@@ -230,10 +230,10 @@ export default function Home() {
   return (
     <Container id="home-page" className="p-4 md:py-10">
       <Head>
-        <title>Gashopper | Multichain Faucet by Varen DAO</title>
+        <title>GasHopper | Multichain Faucet by Varen DAO</title>
         <meta name="fortmatic-site-verification" content="IYT2GS7WhWUUGBhE" />
-        <meta property="og:title" content="Gashopper | Multichain Faucet by Varen DAO" />
-        <meta name="twitter:title" content="Gashopper | Multichain Faucet by Varen DAO" />
+        <meta property="og:title" content="GasHopper | Multichain Faucet by Varen DAO" />
+        <meta name="twitter:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta
           name="description"
           content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
