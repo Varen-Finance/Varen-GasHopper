@@ -93,6 +93,12 @@ export default function Home() {
     if (initialQuery) setFaucetBalances(walletBalances)
   }
 
+  const getRandomNetwork = () => {
+    const randomNetworkId = ACTIVATED_NETWORKS[Math.floor(Math.random() * ACTIVATED_NETWORKS.length)]
+    if (randomNetworkId === chainId) return chainId === ChainId.ETHEREUM ? ChainId.MATIC : ChainId.ETHEREUM
+    return randomNetworkId
+  }
+
   const changeNetworks = (cID: ChainId) => {
     const selectedNetworks = networks
     if (selectedNetworks.indexOf(cID) > -1) {
@@ -166,7 +172,7 @@ export default function Home() {
     setReady(false)
     setQuote(undefined)
     setNativeCurrency(SUPPORTED_NETWORKS[chainId ? chainId : ChainId.ETHEREUM].nativeCurrency.symbol)
-    setNetworks([chainId === ChainId.ETHEREUM ? ChainId.MATIC : ChainId.ETHEREUM])
+    setNetworks([getRandomNetwork()])
   }
 
   useEffect(() => {
