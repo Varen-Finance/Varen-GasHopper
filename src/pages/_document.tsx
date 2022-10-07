@@ -21,15 +21,15 @@ export default function Document() {
         <meta name="twitter:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta
           name="description"
-          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+          content="Fund your Ethereum, Avalanche, BNB-Chain, Celo, Fantom, Moonbeam, Moonriver, Optimistic or Polygon wallet with only one transaction"
         />
         <meta
           property="og:description"
-          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+          content="Fund your Ethereum, Avalanche, BNB-Chain, Celo, Fantom, Moonbeam, Moonriver, Optimistic or Polygon wallet with only one transaction"
         />
         <meta
           name="twitter:description"
-          content="Fund your Ethereum, BNB-Chain, Polygon, Fantom, Arbitrum or Avalanche wallet with only one transaction"
+          content="Fund your Ethereum, Avalanche, BNB-Chain, Celo, Fantom, Moonbeam, Moonriver, Optimistic or Polygon wallet with only one transaction"
         />
       </Head>
       <body>
