@@ -42,7 +42,7 @@ function AppBar(): JSX.Element {
                 title={i18n._(t`About Varen`)}
               >
                 <Image
-                  src="https://res.cloudinary.com/varen-finance/image/upload/v1664737320/gashopper-logo_ydtgsp.svg"
+                  src="https://gashopper.io/images/gashopper-logo.svg"
                   alt="GasHopper by Varen DAO"
                   width={303}
                   height={45}

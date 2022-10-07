@@ -290,7 +290,7 @@ export default function Home() {
             )}
           >
             <Image
-              src="https://res.cloudinary.com/varen-finance/image/upload/v1664737369/arrow_vdhwyu.svg"
+              src="https://gashopper.io/images/arrow.svg"
               alt="Arrow"
               width={129}
               height={80}
