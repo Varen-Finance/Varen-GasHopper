@@ -12,11 +12,11 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000120" />
         <meta name="msapplication-TileColor" content="#000120" />
         <meta name="theme-color" content="#000120" />
-        <meta property="og:image" content="https://gashopper.varen.finance/banner-application.png" />
-        <meta property="og:url" content="https://gashopper.varen.finance" />
+        <meta property="og:image" content="https://gashopper.io/banner-application.png" />
+        <meta property="og:url" content="https://gashopper.io" />
         <meta property="og:type" content="Website" />
-        <meta name="twitter:image" content="https://gashopper.varen.finance/banner-application.png" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://gashopper.io/banner-application.png" />
+        <meta name="twitter:card" content="summary_large_image" />^
         <meta property="og:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta name="twitter:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta
