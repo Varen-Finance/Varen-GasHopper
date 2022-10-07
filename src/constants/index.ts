@@ -17,7 +17,7 @@ export interface WalletInfo {
 
 export const ACTIVATED_NETWORKS = [
   ChainId.ETHEREUM,
-  //ChainId.ARBITRUM,
+  ChainId.ARBITRUM,
   ChainId.AVALANCHE,
   ChainId.BSC,
   ChainId.CELO,
