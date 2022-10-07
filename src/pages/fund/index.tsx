@@ -21,7 +21,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { ethers } from 'ethers'
 import PreviousTransactions from 'app/components/PreviousTransactions'
 import { useETHBalances } from 'app/state/wallet/hooks'
-import QuestionHelper from 'app/components/QuestionHelper'
+import ChainHelper from 'app/components/ChainHelper'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -306,32 +306,33 @@ export default function Home() {
             <Typography variant="sm" className="w-full text-secondary">
               {i18n._(t`2. Select the Networks you want to fund your wallet on`)}
             </Typography>
-            <div className={classNames('flex w-full mt-4')}>
+            <div className={classNames('flex w-full mt-2 flex-wrap')}>
               {ACTIVATED_NETWORKS.map((key: ChainId, i: number) => {
                 if (chainId === key) return null
                 const isActive = networks && networks.indexOf(key) > -1
                 return (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      changeNetworks(key)
-                    }}
-                    disabled={(isActive && networks.length === 1) || !ready}
-                    className={classNames(
-                      'flex items-center px-2 py-2 rounded border mr-2 w-[48px]',
-                      isActive ? 'bg-varen-blue' : 'bg-varen-darkest-blue hover:bg-varen-dark-blue',
-                      isActive ? 'border-varen-blue hover:border-varen-darkest-blue' : 'border-varen-blue',
-                      'disabled:hover:border-varen-blue disabled:opacity-60'
-                    )}
-                  >
-                    <Image
-                      src={NETWORK_ICON[key]}
-                      alt="Switch Network"
-                      className="rounded-md"
-                      width="32px"
-                      height="32px"
-                    />
-                  </button>
+                  <ChainHelper key={i} text={SUPPORTED_NETWORKS[key].chainName}>
+                    <button
+                      onClick={() => {
+                        changeNetworks(key)
+                      }}
+                      disabled={(isActive && networks.length === 1) || !ready}
+                      className={classNames(
+                        'flex items-center px-2 py-2 mt-2 rounded border mr-2 w-[48px]',
+                        isActive ? 'bg-varen-blue' : 'bg-varen-darkest-blue hover:bg-varen-dark-blue',
+                        isActive ? 'border-varen-blue hover:border-varen-darkest-blue' : 'border-varen-blue',
+                        'disabled:hover:border-varen-blue disabled:opacity-60 disabled:pointer-events-none'
+                      )}
+                    >
+                      <Image
+                        src={NETWORK_ICON[key]}
+                        alt={SUPPORTED_NETWORKS[key].chainName}
+                        className="rounded-md"
+                        width="32px"
+                        height="32px"
+                      />
+                    </button>
+                  </ChainHelper>
                 )
               })}
             </div>

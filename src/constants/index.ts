@@ -17,15 +17,15 @@ export interface WalletInfo {
 
 export const ACTIVATED_NETWORKS = [
   ChainId.ETHEREUM,
-  ChainId.MATIC,
-  ChainId.BSC,
   ChainId.ARBITRUM,
   ChainId.AVALANCHE,
-  ChainId.FANTOM,
+  ChainId.BSC,
   ChainId.CELO,
+  ChainId.FANTOM,
   ChainId.MOONBEAM,
   ChainId.MOONRIVER,
   ChainId.OPTIMISM,
+  ChainId.MATIC,
 ]
 
 export const FAUCET_ADDRESS = '0x4Fe425C05DD4052d9ef446eCdf8b3D8fC50DEE15'
@@ -54,38 +54,12 @@ export const SUPPORTED_NETWORKS: {
     blockExplorerUrls: ['https://etherscan.com', 'https://api.etherscan.io'],
     blockExplorerAPIkey: 'GEBJRTC59MB6F9QM77FT9K4HUTVYVGFJIM',
   },
-  [ChainId.BSC]: {
-    chainId: '0x38',
-    chainName: 'BNB Chain',
-    nativeCurrency: {
-      name: 'Binance Coin',
-      symbol: 'BNB',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://bscscan.com', 'https://api.bscscan.com'],
-    blockExplorerAPIkey: 'IR4XKJTR4H258VFIW99TYCC3KK7AP7MJS9',
-  },
-  [ChainId.MATIC]: {
-    chainId: '0x89',
-    chainName: 'Matic',
-    nativeCurrency: {
-      name: 'Matic',
-      symbol: 'MATIC',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://polygonscan.com', 'https://api.polygonscan.com'],
-    blockExplorerAPIkey: 'NEHJVRRCJYN6S36QQ17EINYSV84UWJ56BR',
-  },
-  [ChainId.FANTOM]: {
-    chainId: '0xfa',
-    chainName: 'Fantom',
-    nativeCurrency: {
-      name: 'Fantom',
-      symbol: 'FTM',
-      decimals: 18,
-    },
-    blockExplorerUrls: ['https://ftmscan.com', 'https://api.ftmscan.com'],
-    blockExplorerAPIkey: 'T3N2VPPDTD3C8U52S1XINH9RN1WZFKVEQ3',
+  [ChainId.ARBITRUM]: {
+    chainId: '0xa4b1',
+    chainName: 'Arbitrum',
+    nativeCurrency: { name: 'Ethereum', symbol: 'ETH', decimals: 18 },
+    blockExplorerUrls: ['https://arbiscan.io', 'https://api.arbiscan.io'],
+    blockExplorerAPIkey: 'ZZKZFFS5BZ9G4FKYSVHT818E8PNIWT788S',
   },
   [ChainId.AVALANCHE]: {
     chainId: '0xa86a',
@@ -98,20 +72,34 @@ export const SUPPORTED_NETWORKS: {
     blockExplorerUrls: ['https://snowtrace.io', 'https://api.snowtrace.io'],
     blockExplorerAPIkey: 'ISGK8TRRVD7ZSFHT4DJB2QJ1XG7JF97FUT',
   },
-  [ChainId.ARBITRUM]: {
-    chainId: '0xa4b1',
-    chainName: 'Arbitrum',
-    nativeCurrency: { name: 'Ethereum', symbol: 'ETH', decimals: 18 },
-    blockExplorerUrls: ['https://arbiscan.io', 'https://api.arbiscan.io'],
-    blockExplorerAPIkey: 'ZZKZFFS5BZ9G4FKYSVHT818E8PNIWT788S',
+  [ChainId.BSC]: {
+    chainId: '0x38',
+    chainName: 'BNB Chain',
+    nativeCurrency: {
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://bscscan.com', 'https://api.bscscan.com'],
+    blockExplorerAPIkey: 'IR4XKJTR4H258VFIW99TYCC3KK7AP7MJS9',
   },
-
   [ChainId.CELO]: {
     chainId: '0xa4ec',
     chainName: 'Celo',
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
     blockExplorerUrls: ['https://celoscan.io', 'https://api.celoscan.io'],
     blockExplorerAPIkey: 'G1CK6KFG3VGF8PPF6PX7CFC36ERSCVPYIF',
+  },
+  [ChainId.FANTOM]: {
+    chainId: '0xfa',
+    chainName: 'Fantom',
+    nativeCurrency: {
+      name: 'Fantom',
+      symbol: 'FTM',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://ftmscan.com', 'https://api.ftmscan.com'],
+    blockExplorerAPIkey: 'T3N2VPPDTD3C8U52S1XINH9RN1WZFKVEQ3',
   },
   [ChainId.MOONBEAM]: {
     chainId: '0x504',
@@ -133,5 +121,16 @@ export const SUPPORTED_NETWORKS: {
     nativeCurrency: { name: 'Ethereum', symbol: 'ETH', decimals: 18 },
     blockExplorerUrls: ['https://optimistic.etherscan.io', 'https://api-optimistic.etherscan.io'],
     blockExplorerAPIkey: 'PHYE5HKJSZH3BRX5EV3686G435RC8PDJNF',
+  },
+  [ChainId.MATIC]: {
+    chainId: '0x89',
+    chainName: 'Matic',
+    nativeCurrency: {
+      name: 'Matic',
+      symbol: 'MATIC',
+      decimals: 18,
+    },
+    blockExplorerUrls: ['https://polygonscan.com', 'https://api.polygonscan.com'],
+    blockExplorerAPIkey: 'NEHJVRRCJYN6S36QQ17EINYSV84UWJ56BR',
   },
 }
