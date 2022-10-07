@@ -270,7 +270,7 @@ export default function Home() {
             <div className={classNames('flex w-full mt-4 flex-wrap', 'md:flex-nowrap')}>
               <Web3Network variant={'large'} />
               {account && (
-                <div className="flex flex-wrap items-center content-center mt-4 md:mt-0 md:ml-4">
+                <div className="flex flex-wrap items-center content-center w-full mt-4 md:mt-0 md:ml-4 md:w-auto">
                   <Typography variant="sm" className="w-full">
                     {ready && quote ? `${quote?.incomming_rate} ${nativeCurrency}` : <Loader />}
                   </Typography>
