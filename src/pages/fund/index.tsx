@@ -290,7 +290,7 @@ export default function Home() {
             )}
           >
             <Image
-              src="https://gashopper.io/images/arrow.svg"
+              src="https://gashopper.io/images/misc/arrow.svg"
               alt="Arrow"
               width={129}
               height={80}
