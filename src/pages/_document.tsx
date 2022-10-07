@@ -16,7 +16,7 @@ export default function Document() {
         <meta property="og:url" content="https://gashopper.io" />
         <meta property="og:type" content="Website" />
         <meta name="twitter:image" content="https://gashopper.io/banner-application.png" />
-        <meta name="twitter:card" content="summary_large_image" />^
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta name="twitter:title" content="GasHopper | Multichain Faucet by Varen DAO" />
         <meta
