@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useNativePrice } from 'app/hooks'
 import { useEffect, useState } from 'react'
 import Dots from '../Dots'
+import { formatValue } from 'helpers'
 
 interface Props {
   chainId: ChainId
@@ -16,16 +17,10 @@ interface Props {
 
 const FundingCard = ({ amount, chainId, nativeCurrency, recipient }: Props) => {
   const [price, setPrice] = useState<string | undefined>()
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
 
   const getPrice = async (a: number) => {
     const priceBase = await useNativePrice(chainId)
-    setPrice(formatter.format(priceBase * a))
+    setPrice(formatValue(priceBase * a, 2, 2, true, '$'))
   }
 
   useEffect(() => {

@@ -29,6 +29,11 @@ const useMenu: UseMenu = () => {
     title: i18n._(t`Fund your Wallet`),
     link: '/fund',
   })
+  menu.push({
+    key: 'stats',
+    title: i18n._(t`Statistics`),
+    link: '/stats',
+  })
 
   menu.push({
     key: 'help',
