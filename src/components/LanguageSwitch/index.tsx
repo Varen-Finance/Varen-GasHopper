@@ -20,7 +20,7 @@ const LANG_TO_COUNTRY = {
   it: 'Italiano',
   ja: '日本語',
   //  ko: '한국어',
-  //  nl: 'Nederlands',
+  nl: 'Nederlands',
   pl: 'Polski',
   //  pt: 'Português',
   //  ro: 'Română',
