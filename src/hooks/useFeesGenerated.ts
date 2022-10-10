@@ -1,5 +1,5 @@
 import { ChainId } from '@sushiswap/core-sdk'
-import { FAUCET_ADDRESS, SUPPORTED_NETWORKS } from 'app/constants'
+import { FAUCET_ADDRESS, FEE_EXCLUDE_LIST, SUPPORTED_NETWORKS } from 'app/constants'
 import axios from 'axios'
 import { ethers } from 'ethers'
 
@@ -17,7 +17,7 @@ const useFeesGenerated = async (chainId: ChainId) => {
       let totalFee = 0
       let txCount = 0
       data.forEach((transaction: Transaction) => {
-        if (transaction.from.toLowerCase() !== FAUCET_ADDRESS.toLowerCase()) {
+        if (FEE_EXCLUDE_LIST.indexOf(transaction.from.toLowerCase()) === -1) {
           totalFee += Number(ethers.utils.formatEther(transaction.value)) / 10
           txCount++
         }
