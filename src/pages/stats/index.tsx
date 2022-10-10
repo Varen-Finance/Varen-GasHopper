@@ -17,22 +17,26 @@ export default function Stats() {
   const [chainInfo, setChainInfo] = useState<SupportedNetworksProps>(SUPPORTED_NETWORKS)
   const [totalValue, setTotalValue] = useState<number>(0)
   const [totalFees, setTotalFees] = useState<number>(0)
+  const [totalTxs, setTotalTxs] = useState<number>(0)
   const interval: any = useRef()
 
   const updateChainInfo = async () => {
     const newChainInfo = chainInfo
     let total = 0
     let totalFees = 0
+    let totalTransactions = 0
     ACTIVATED_NETWORKS.forEach(async (key: ChainId) => {
       const balance = await useWalletBalance(key)
       const price = await useNativePrice(key)
-      const fees = await useFeesGenerated(key)
+      const { totalFee, txCount } = await useFeesGenerated(key)
       newChainInfo[key].walletBalance = balance
       newChainInfo[key].nativeCurrency.price = price
-      newChainInfo[key].generatedFees = fees
+      newChainInfo[key].generatedFees = totalFee
 
+      totalTransactions += txCount
       total += balance * price
-      totalFees += fees * price
+      totalFees += totalFee * price
+      setTotalTxs(totalTransactions)
       setChainInfo(newChainInfo)
       setTotalValue(total)
       setTotalFees(totalFees)
@@ -70,7 +74,7 @@ export default function Stats() {
         />
       </Head>
       <section className="flex flex-wrap w-full">
-        <div className={classNames('flex flex-wrap w-full mt-10', 'lg:w-3/5 lg:pr-4')}>
+        <div className={classNames('flex flex-wrap w-full mt-10 content-start', 'lg:w-3/5 lg:pr-4')}>
           <div className="flex w-full space-between">
             <Typography weight={700} variant="lg" className="flex flex-grow ">
               {i18n._(t`GasHopper funds`)}
@@ -82,31 +86,33 @@ export default function Stats() {
           <div className="w-full mt-2 border rounded bg-varen-darkest-blue border-varen-blue">
             <table className="w-full">
               <thead>
-                <th className="pl-4 py-2 text-left w-[140px]">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Token`)}
-                  </Typography>
-                </th>
-                <th className={classNames('pl-4 py-2 text-left w-[140px] hidden', 'lg:block')}>
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Chain`)}
-                  </Typography>
-                </th>
-                <th className="py-2 pr-4 text-right">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Balance`)}
-                  </Typography>
-                </th>
-                <th className={classNames('pr-4 py-2 text-right  hidden', 'md:block')}>
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Price`)}
-                  </Typography>
-                </th>
-                <th className="py-2 pr-4 text-right">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Value`)}
-                  </Typography>
-                </th>
+                <tr>
+                  <th className="pl-4 py-2 text-left w-[140px]">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Token`)}
+                    </Typography>
+                  </th>
+                  <th className={classNames('pl-4 py-2 text-left w-[140px] hidden', 'lg:block')}>
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Chain`)}
+                    </Typography>
+                  </th>
+                  <th className="py-2 pr-4 text-right">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Balance`)}
+                    </Typography>
+                  </th>
+                  <th className={classNames('pr-4 py-2 text-right  hidden', 'md:block')}>
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Price`)}
+                    </Typography>
+                  </th>
+                  <th className="py-2 pr-4 text-right">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Value`)}
+                    </Typography>
+                  </th>
+                </tr>
               </thead>
               <tbody>
                 {ACTIVATED_NETWORKS.map((chainId: ChainId, index: number) => {
@@ -165,21 +171,23 @@ export default function Stats() {
           <div className="w-full mt-2 border rounded bg-varen-darkest-blue border-varen-blue">
             <table className="w-full">
               <thead>
-                <th className="pl-4 py-2 text-left w-[80px]">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Token`)}
-                  </Typography>
-                </th>
-                <th className="py-2 pr-4 text-right">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Fees`)}
-                  </Typography>
-                </th>
-                <th className="py-2 pr-4 text-right">
-                  <Typography variant="base" className="text-secondary">
-                    {i18n._(t`Value`)}
-                  </Typography>
-                </th>
+                <tr>
+                  <th className="pl-4 py-2 text-left w-[80px]">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Token`)}
+                    </Typography>
+                  </th>
+                  <th className="py-2 pr-4 text-right">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Fees`)}
+                    </Typography>
+                  </th>
+                  <th className="py-2 pr-4 text-right">
+                    <Typography variant="base" className="text-secondary">
+                      {i18n._(t`Value`)}
+                    </Typography>
+                  </th>
+                </tr>
               </thead>
               <tbody>
                 {ACTIVATED_NETWORKS.map((chainId: ChainId, index: number) => {
@@ -216,6 +224,11 @@ export default function Stats() {
                 })}
               </tbody>
             </table>
+          </div>
+          <div className="w-full mt-2">
+            <Typography weight={700} variant="sm" className={classNames('w-full  text-secondary', 'lg:text-right')}>
+              {i18n._(t`Total transactions: ${totalTxs}`)}
+            </Typography>
           </div>
         </div>
       </section>

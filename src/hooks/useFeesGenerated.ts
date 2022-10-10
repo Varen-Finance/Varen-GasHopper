@@ -14,14 +14,16 @@ const useFeesGenerated = async (chainId: ChainId) => {
         `${url}/api?module=account&action=txlist&address=${FAUCET_ADDRESS}&startblock=${startBlock}&apikey=${key}`
       )
       const data = await response.data.result
-      let value = 0
+      let totalFee = 0
+      let txCount = 0
       data.forEach((transaction: Transaction) => {
         if (transaction.from.toLowerCase() !== FAUCET_ADDRESS.toLowerCase()) {
-          value += Number(ethers.utils.formatEther(transaction.value)) / 10
+          totalFee += Number(ethers.utils.formatEther(transaction.value)) / 10
+          txCount++
         }
       })
 
-      return value
+      return { totalFee, txCount }
     } catch (error) {
       return error.message
     }
