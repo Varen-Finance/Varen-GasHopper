@@ -24,7 +24,7 @@ const LANG_TO_COUNTRY = {
   pl: 'Polski',
   //  pt: 'Português',
   //  ro: 'Română',
-  //  th: 'ไทย',
+  th: 'ไทย',
   tr: 'Türkçe',
   vi: 'Tiếng Việt',
   zh_CN: '中文',
