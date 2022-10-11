@@ -22,7 +22,7 @@ const LANG_TO_COUNTRY = {
   //  ko: '한국어',
   nl: 'Nederlands',
   pl: 'Polski',
-  //  pt: 'Português',
+  pt: 'Português',
   //  ro: 'Română',
   th: 'ไทย',
   tr: 'Türkçe',
