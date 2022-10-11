@@ -14,7 +14,7 @@ const LANG_TO_COUNTRY = {
   //  da: 'Dansk',
   //  de: 'Deutsch',
   //  es: 'Español',
-  //  fil: 'Filipino',
+    fil: 'Filipino',
   fr: 'Français',
   //  hi: 'हिन्दी',
   it: 'Italiano',

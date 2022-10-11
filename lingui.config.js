@@ -10,7 +10,7 @@ module.exports = {
   format: 'minimal',
   formatOptions: { origins: false, lineNumbers: false },
   sourceLocale: 'en',
-  locales: ['en', 'fr', 'it', 'ja', 'nl', 'pl', 'tr', 'vi', 'zh_CN'],
+  locales: ['en', 'fil', 'fr', 'it', 'ja', 'nl', 'pl', 'tr', 'vi', 'zh_CN'],
   orderBy: 'messageId',
   pseudoLocale: '',
   rootDir: '.',
