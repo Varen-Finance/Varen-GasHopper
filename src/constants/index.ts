@@ -28,6 +28,8 @@ export const ACTIVATED_NETWORKS = [
   ChainId.MATIC,
 ]
 
+export const API_URL = 'https://varen-gashopper-api-staging.herokuapp.com'
+
 export const FAUCET_ADDRESS = '0x4Fe425C05DD4052d9ef446eCdf8b3D8fC50DEE15'
 
 export const FEE_EXCLUDE_LIST = [

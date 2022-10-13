@@ -7,7 +7,7 @@ import { NETWORK_ICON } from 'app/config/networks'
 import { SUPPORTED_NETWORKS } from 'app/constants'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { useAllQuotes } from 'app/hooks'
+import { useAllQuotes, useAllSendQuotes } from 'app/hooks'
 import { ChainId } from '@sushiswap/core-sdk'
 import ExternalLink from '../ExternalLink'
 import moment from 'moment'
@@ -23,28 +23,28 @@ const FundingCard = ({ account }: Props) => {
   const [allQuotes, setAllQuotes] = useState<Quote[]>([])
 
   const getAllQuotes = async () => {
-    const max = 20
     const allNewQuotes = await useAllQuotes(account)
 
     allNewQuotes.sort((a, b) => {
       const keyA = a.id
       const keyB = b.id
-      // Compare the 2 dates
       if (keyA > keyB) return -1
       if (keyA < keyB) return 1
       return 0
     })
 
-    const filteredQuotes = []
-
-    allNewQuotes.forEach((quote) => {
-      if (quote.accepted) {
-        filteredQuotes.push(quote)
-        if (filteredQuotes.length === max) return
-      }
+    const allOldQuotes = await useAllSendQuotes(account)
+    allOldQuotes.sort((a, b) => {
+      const keyA = a.id
+      const keyB = b.id
+      if (keyA > keyB) return -1
+      if (keyA < keyB) return 1
+      return 0
     })
 
-    setAllQuotes(filteredQuotes)
+    const combinedQuotes = [].concat(allNewQuotes, allOldQuotes)
+
+    setAllQuotes(combinedQuotes)
   }
 
   useEffect(() => {

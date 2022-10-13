@@ -22,6 +22,7 @@ import { ethers } from 'ethers'
 import PreviousTransactions from 'app/components/PreviousTransactions'
 import { useETHBalances } from 'app/state/wallet/hooks'
 import ChainHelper from 'app/components/ChainHelper'
+import { formatValue } from 'helpers'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -272,10 +273,10 @@ export default function Home() {
               {account && (
                 <div className="flex flex-wrap items-center content-center w-full mt-4 md:mt-0 md:ml-4 md:w-auto">
                   <Typography variant="sm" className="w-full">
-                    {ready && quote ? `${quote?.incomming_rate} ${nativeCurrency}` : <Loader />}
+                    {ready && quote ? `${quote.incomming_rate} ${nativeCurrency}` : <Loader />}
                   </Typography>
                   <Typography variant="sm" className="w-full italic text-secondary">
-                    ~$100.00
+                    {ready && quote ? `~${formatValue(quote.incomming_in_usd, 2, 2, true, '$')}` : <Loader />}
                   </Typography>
                 </div>
               )}
@@ -437,7 +438,7 @@ export default function Home() {
               )
             })}
             <FundingCard
-              amount={quote?.incomming_rate / 10}
+              amount={quote.incomming_rate * (quote.fees_in_usd / quote.incomming_in_usd)}
               nativeCurrency={nativeCurrency}
               recipient={i18n._(t`Varen DAO Treasury`)}
               chainId={chainId}

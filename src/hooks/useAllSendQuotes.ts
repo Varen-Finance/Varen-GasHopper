@@ -1,10 +1,11 @@
 import { API_URL } from 'app/constants'
 import axios from 'axios'
 
-const useAllQuotes = async (address: string) => {
+const useAllSendQuotes = async (address?: string) => {
   const res = async () => {
+    const enpoint = address ? `all_send_contracts_for_addr/${address}` : 'all_send_contracts'
     try {
-      const response = await axios.get(`${API_URL}/all_accepted_contracts_for_addr/${address}`, {
+      const response = await axios.get(`${API_URL}/${enpoint}`, {
         withCredentials: false,
       })
 
@@ -17,4 +18,4 @@ const useAllQuotes = async (address: string) => {
   return res()
 }
 
-export default useAllQuotes
+export default useAllSendQuotes

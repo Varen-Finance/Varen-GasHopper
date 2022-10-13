@@ -5,8 +5,11 @@ interface Quote {
   id: number
   incomming: ChainId
   incomming_rate: number
+  incomming_in_usd: number
   outgoing: ChainId[]
+  outgoing_in_usd: number
   outgoing_rates: number[]
+  fees_in_usd: number
   send: boolean
   send_tx: string[]
 }
