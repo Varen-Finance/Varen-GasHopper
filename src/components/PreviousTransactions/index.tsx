@@ -33,18 +33,7 @@ const FundingCard = ({ account }: Props) => {
       return 0
     })
 
-    const allOldQuotes = await useAllSendQuotes(account)
-    allOldQuotes.sort((a, b) => {
-      const keyA = a.id
-      const keyB = b.id
-      if (keyA > keyB) return -1
-      if (keyA < keyB) return 1
-      return 0
-    })
-
-    const combinedQuotes = [].concat(allNewQuotes, allOldQuotes)
-
-    setAllQuotes(combinedQuotes)
+    setAllQuotes(allNewQuotes)
   }
 
   useEffect(() => {
