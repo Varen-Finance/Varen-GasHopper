@@ -19,7 +19,7 @@ const useWalletBalance = async (chainId: ChainId) => {
         return 0
       }
     } catch (error) {
-      return error.message
+      return 0
     }
   }
 
