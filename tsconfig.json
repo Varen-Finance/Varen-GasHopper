@@ -25,6 +25,8 @@
       "app/interfaces/*": ["./interfaces/*"],
       "app/layouts": ["./layouts"],
       "app/layouts/*": ["./layouts/*"],
+      "app/lib": ["./lib"],
+      "app/lib/*": ["./lib/*"],
       "app/modals": ["./modals"],
       "app/modals/*": ["./modals/*"],
       "app/services": ["./services"],
@@ -50,6 +52,6 @@
     "downlevelIteration": true,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "sushi-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

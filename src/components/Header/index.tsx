@@ -1,5 +1,5 @@
 import { ChainId, NATIVE } from '@sushiswap/core-sdk'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ACTIVATED_NETWORKS, SUPPORTED_NETWORKS } from '../../constants'
 import ExternalLink from '../ExternalLink'
@@ -11,7 +11,6 @@ import Web3Network from '../Web3Network'
 import Web3Status from '../Web3Status'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
-import { useETHBalances } from '../../state/wallet/hooks'
 import { useLingui } from '@lingui/react'
 import { NETWORK_ICON, NETWORK_LABEL } from '../../config/networks'
 
@@ -20,12 +19,26 @@ import cookie from 'cookie-cutter'
 import HeadlessUIModal from '../Modal/HeadlessUIModal'
 import useMenu from './useMenu'
 import { NavigationItem } from './NavigationItem'
+import { useNativeCurrencyBalances } from 'lib/hooks/useCurrencyBalance'
+import { useWalletBalance } from 'app/hooks'
+import { formatValue } from 'helpers'
 
 function AppBar(): JSX.Element {
   const { i18n } = useLingui()
   const { account, chainId, library } = useActiveWeb3React()
-  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
+  const [walletBalance, setWalletBalance] = useState<number>(0)
   const menu = useMenu()
+
+  const getUserBalance = async () => {
+    const userWalletBalance = await useWalletBalance(chainId, account)
+    if (walletBalance !== userWalletBalance) {
+      setWalletBalance(userWalletBalance)
+    }
+  }
+
+  useEffect(() => {
+    getUserBalance()
+  }, [account, chainId])
 
   // @ts-ignore
   const currentNetwork = `<span class="font-bold text-blue">${NETWORK_LABEL[chainId]}</span>`
@@ -67,10 +80,10 @@ function AppBar(): JSX.Element {
                 </div>
 
                 <div className="flex items-center w-auto cursor-default whitespace-nowrap">
-                  {account && chainId && userEthBalance && (
+                  {account && chainId && walletBalance > 0 && (
                     <>
                       <div className="px-3 py-2 text-primary text-bold">
-                        {userEthBalance?.toSignificant(4)} {NATIVE[chainId].symbol}
+                        {formatValue(walletBalance, 0, 4, true, false, ` ${NATIVE[chainId].symbol}`)}
                       </div>
                     </>
                   )}

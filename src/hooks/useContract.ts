@@ -1,9 +1,10 @@
-import { ChainId } from '@sushiswap/core-sdk'
+import { Contract } from '@ethersproject/contracts'
 import {
-  ARCHER_ROUTER_ADDRESS,
   BAR_ADDRESS,
   BENTOBOX_ADDRESS,
   BORING_HELPER_ADDRESS,
+  CHAIN_KEY,
+  ChainId,
   CHAINLINK_ORACLE_ADDRESS,
   ENS_REGISTRAR_ADDRESS,
   FACTORY_ADDRESS,
@@ -14,49 +15,55 @@ import {
   MINICHEF_ADDRESS,
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
-  STOP_LIMIT_ORDER_ADDRESS,
   SUSHI_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
-} from '@sushiswap/sdk'
+} from '@sushiswap/core-sdk'
+import { LIMIT_ORDER_HELPER_ADDRESS, STOP_LIMIT_ORDER_ADDRESS } from '@sushiswap/limit-order-sdk'
+import MISO from '@sushiswap/miso/exports/all.json'
+import ConstantProductPoolArtifact from '@sushiswap/trident/artifacts/contracts/pool/constant-product/ConstantProductPool.sol/ConstantProductPool.json'
+import TRIDENT from '@sushiswap/trident/exports/all.json'
+import { Pool, PoolType } from '@sushiswap/trident-sdk'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS,
-} from '../constants/abis/argent-wallet-detector'
-
-import ARCHER_ROUTER_ABI from '../constants/abis/archer-router.json'
-import BAR_ABI from '../constants/abis/bar.json'
-import BENTOBOX_ABI from '../constants/abis/bentobox.json'
-import BORING_HELPER_ABI from '../constants/abis/boring-helper.json'
-import CHAINLINK_ORACLE_ABI from '../constants/abis/chainlink-oracle.json'
-import CLONE_REWARDER_ABI from '../constants/abis/clone-rewarder.json'
-import COMPLEX_REWARDER_ABI from '../constants/abis/complex-rewarder.json'
-import { Contract } from '@ethersproject/contracts'
-import EIP_2612_ABI from '../constants/abis/eip-2612.json'
-import ENS_ABI from '../constants/abis/ens-registrar.json'
-import ENS_PUBLIC_RESOLVER_ABI from '../constants/abis/ens-public-resolver.json'
-import ERC20_ABI from '../constants/abis/erc20.json'
-import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
-import FACTORY_ABI from '../constants/abis/factory.json'
-import INARI_ABI from '../constants/abis/inari.json'
-import IUniswapV2PairABI from '../constants/abis/uniswap-v2-pair.json'
-import LIMIT_ORDER_ABI from '../constants/abis/limit-order.json'
-import LIMIT_ORDER_HELPER_ABI from '../constants/abis/limit-order-helper.json'
-import MAKER_ABI from '../constants/abis/maker.json'
-import MASTERCHEF_ABI from '../constants/abis/masterchef.json'
-import MASTERCHEF_V2_ABI from '../constants/abis/masterchef-v2.json'
-import MEOWSHI_ABI from '../constants/abis/meowshi.json'
-import MERKLE_DISTRIBUTOR_ABI from '../constants/abis/merkle-distributor.json'
-import MINICHEF_ABI from '../constants/abis/minichef-v2.json'
-import MULTICALL2_ABI from '../constants/abis/multicall2.json'
-import ROUTER_ABI from '../constants/abis/router.json'
-import SUSHI_ABI from '../constants/abis/sushi.json'
-import TIMELOCK_ABI from '../constants/abis/timelock.json'
-import UNI_FACTORY_ABI from '../constants/abis/uniswap-v2-factory.json'
-import WETH9_ABI from '../constants/abis/weth.json'
-import ZENKO_ABI from '../constants/abis/zenko.json'
-import { getContract } from '../functions'
-import { useActiveWeb3React } from './useActiveWeb3React'
+} from 'app/constants/abis/argent-wallet-detector'
+import BAR_ABI from 'app/constants/abis/bar.json'
+import BENTOBOX_ABI from 'app/constants/abis/bentobox.json'
+import BORING_HELPER_ABI from 'app/constants/abis/boring-helper.json'
+import CHAINLINK_ORACLE_ABI from 'app/constants/abis/chainlink-oracle.json'
+import CLONE_REWARDER_ABI from 'app/constants/abis/clone-rewarder.json'
+import COMPLEX_REWARDER_ABI from 'app/constants/abis/complex-rewarder.json'
+import DASHBOARD_ABI from 'app/constants/abis/dashboard.json'
+import EIP_2612_ABI from 'app/constants/abis/eip-2612.json'
+import ENS_PUBLIC_RESOLVER_ABI from 'app/constants/abis/ens-public-resolver.json'
+import ENS_ABI from 'app/constants/abis/ens-registrar.json'
+import { ERC20_BYTES32_ABI } from 'app/constants/abis/erc20'
+import ERC20_ABI from 'app/constants/abis/erc20.json'
+import FACTORY_ABI from 'app/constants/abis/factory.json'
+import INARI_ABI from 'app/constants/abis/inari.json'
+import MULTICALL_ABI from 'app/constants/abis/interface-multicall.json'
+import KASHI_REPOSITORY_ABI from 'app/constants/abis/kashi-repository.json'
+import LIMIT_ORDER_ABI from 'app/constants/abis/limit-order.json'
+import LIMIT_ORDER_HELPER_ABI from 'app/constants/abis/limit-order-helper.json'
+import MAKER_ABI from 'app/constants/abis/maker.json'
+import MASTERCHEF_ABI from 'app/constants/abis/masterchef.json'
+import MASTERCHEF_V2_ABI from 'app/constants/abis/masterchef-v2.json'
+import MEOWSHI_ABI from 'app/constants/abis/meowshi.json'
+import MERKLE_DISTRIBUTOR_ABI from 'app/constants/abis/merkle-distributor.json'
+import MINICHEF_ABI from 'app/constants/abis/minichef-v2.json'
+import MISO_HELPER_ABI from 'app/constants/abis/miso-helper.json'
+import MULTICALL2_ABI from 'app/constants/abis/multicall2.json'
+import ROUTER_ABI from 'app/constants/abis/router.json'
+import SUSHI_ABI from 'app/constants/abis/sushi.json'
+import SUSHIROLL_ABI from 'app/constants/abis/sushi-roll.json'
+import TIMELOCK_ABI from 'app/constants/abis/timelock.json'
+import UNI_FACTORY_ABI from 'app/constants/abis/uniswap-v2-factory.json'
+import IUniswapV2PairABI from 'app/constants/abis/uniswap-v2-pair.json'
+import WETH9_ABI from 'app/constants/abis/weth.json'
+import ZENKO_ABI from 'app/constants/abis/zenko.json'
+import { getContract } from 'app/functions'
+import { useActiveWeb3React } from 'app/services/web3'
 import { useMemo } from 'react'
 
 const UNI_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
@@ -66,18 +73,26 @@ export function useEIP2612Contract(tokenAddress?: string): Contract | null {
 }
 
 // returns null on errors
-export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  const { library, account } = useActiveWeb3React()
+export function useContract<T extends Contract = Contract>(
+  addressOrAddressMap: string | { [chainId: number]: string } | undefined,
+  ABI: any,
+  withSignerIfPossible = true
+): T | null {
+  const { library, account, chainId } = useActiveWeb3React()
 
   return useMemo(() => {
-    if (!address || !ABI || !library) return null
+    if (!addressOrAddressMap || !ABI || !library || !chainId) return null
+    let address: string | undefined
+    if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
+    else address = addressOrAddressMap[chainId]
+    if (!address) return null
     try {
       return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined)
     } catch (error) {
-      console.debug('Failed to get contract', error)
+      console.error('Failed to get contract', error)
       return null
     }
-  }, [address, ABI, library, withSignerIfPossible, account])
+  }, [addressOrAddressMap, ABI, library, chainId, withSignerIfPossible, account]) as T
 }
 
 export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: boolean): Contract | null {
@@ -86,7 +101,7 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 
 export function useWETH9Contract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && WNATIVE_ADDRESS[chainId], WETH9_ABI, withSignerIfPossible)
+  return useContract(chainId ? WNATIVE_ADDRESS[chainId] : undefined, WETH9_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract(): Contract | null {
@@ -100,7 +115,7 @@ export function useArgentWalletDetectorContract(): Contract | null {
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && ENS_REGISTRAR_ADDRESS[chainId], ENS_ABI, withSignerIfPossible)
+  return useContract(chainId ? ENS_REGISTRAR_ADDRESS[chainId] : undefined, ENS_ABI, withSignerIfPossible)
 }
 
 export function useENSResolverContract(address: string | undefined, withSignerIfPossible?: boolean): Contract | null {
@@ -120,82 +135,133 @@ export function useMerkleDistributorContract(): Contract | null {
   return useContract(chainId ? MERKLE_DISTRIBUTOR_ADDRESS[chainId] : undefined, MERKLE_DISTRIBUTOR_ABI, true)
 }
 
+export function useProtocolMerkleDistributorContract(): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId ? '0x1026cbed7b7E851426b959BC69dcC1bf5876512d' : undefined, MERKLE_DISTRIBUTOR_ABI, true)
+}
+
+export function useKashiRepositoryContract(): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId ? '0x400AFAbFB249210E08A8dfC429FfE20d32245f57' : undefined, KASHI_REPOSITORY_ABI, false)
+}
+
 export function useBoringHelperContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && BORING_HELPER_ADDRESS[chainId], BORING_HELPER_ABI, false)
+  // TODO ramin update in sdk
+  return useContract(
+    chainId
+      ? chainId === ChainId.KOVAN
+        ? '0x5bd6e4eFA335192FDA5D6B42a344ccA3d45894B8'
+        : BORING_HELPER_ADDRESS[chainId]
+      : undefined,
+    BORING_HELPER_ABI,
+    false
+  )
 }
 
 export function useMulticall2Contract() {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MULTICALL2_ADDRESS[chainId], MULTICALL2_ABI, false)
+  return useContract(chainId ? MULTICALL2_ADDRESS[chainId] : undefined, MULTICALL2_ABI, false)
+}
+
+const MULTICALL_ADDRESS = {
+  [ChainId.ETHEREUM]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.ROPSTEN]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.RINKEBY]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.GÖRLI]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.KOVAN]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.MATIC]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.MATIC_TESTNET]: '0xdDCbf776dF3dE60163066A5ddDF2277cB445E0F3',
+  [ChainId.OPTIMISM]: '0x1F98415757620B543A52E61c46B32eB19261F984',
+  [ChainId.ARBITRUM]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
+  [ChainId.MOONBEAM]: '0x34c471ddceb20018bbb73f6d13709936fc870acc',
+  [ChainId.AVALANCHE]: '0x8C0F842791F03C095b6c633759224FcC9ACe68ea',
+  [ChainId.BSC]: '0x47A307e3167820daf22a377D777371753758f59c',
+  [ChainId.FANTOM]: '0xB1395e098c0a847CC719Bcf1Fc8114421a9F8232',
+  [ChainId.CELO]: '0x3d0B3b816DC1e0825808F27510eF7Aa5E3136D75',
+  [ChainId.HARMONY]: '0xaAB49386BFcB605F853763Ea382B91C9c83b9Ac5',
+  [ChainId.MOONRIVER]: '0x8C8BF5Dea280A1eC68219D66E8A21E60585830F5',
+  [ChainId.XDAI]: '0x2B75358D07417D4e895c952Ca84A44E63AEBE3Dd',
+  [ChainId.TELOS]: '0x64e1E895866B3126f8f2E2912B475FDB35b2F315',
+  [ChainId.FUSE]: '0x393B6DC9B00E18314888678721eC0e923FC5f49D',
+  [ChainId.OKEX]: '0x8C8BF5Dea280A1eC68219D66E8A21E60585830F5',
+  [ChainId.HECO]: '0x64e1E895866B3126f8f2E2912B475FDB35b2F315',
+  [ChainId.PALM]: '0x4d4A0D45a98AE8EC25b359D93A088A87BC9eF70b',
+  [ChainId.KAVA]: '0x67dA5f2FfaDDfF067AB9d5F025F8810634d84287',
+  [ChainId.METIS]: '0x67dA5f2FfaDDfF067AB9d5F025F8810634d84287',
+  [ChainId.ARBITRUM_NOVA]: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
+  [ChainId.BOBA_AVAX]: '0x67dA5f2FfaDDfF067AB9d5F025F8810634d84287',
+}
+
+export function useInterfaceMulticall(): Contract | null | undefined {
+  return useContract(MULTICALL_ADDRESS, MULTICALL_ABI, false)
 }
 
 export function useSushiContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && SUSHI_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
+  return useContract(chainId ? SUSHI_ADDRESS[chainId] : undefined, SUSHI_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MASTERCHEF_ADDRESS[chainId], MASTERCHEF_ABI, withSignerIfPossible)
+  return useContract(chainId ? MASTERCHEF_ADDRESS[chainId] : undefined, MASTERCHEF_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MASTERCHEF_V2_ADDRESS[chainId], MASTERCHEF_V2_ABI, withSignerIfPossible)
+  return useContract(chainId ? MASTERCHEF_V2_ADDRESS[chainId] : undefined, MASTERCHEF_V2_ABI, withSignerIfPossible)
 }
 export function useMiniChefContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MINICHEF_ADDRESS[chainId], MINICHEF_ABI, withSignerIfPossible)
+  return useContract(chainId ? MINICHEF_ADDRESS[chainId] : undefined, MINICHEF_ABI, withSignerIfPossible)
 }
 
 export function useFactoryContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && FACTORY_ADDRESS[chainId], FACTORY_ABI, false)
+  return useContract(chainId ? FACTORY_ADDRESS[chainId] : undefined, FACTORY_ABI, false)
 }
 
-export function useRouterContract(useArcher = false, withSignerIfPossible?: boolean): Contract | null {
+export function useRouterContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-
-  const address = useArcher ? ARCHER_ROUTER_ADDRESS[chainId] : ROUTER_ADDRESS[chainId]
-  const abi = useArcher ? ARCHER_ROUTER_ABI : ROUTER_ABI
-
-  return useContract(address, abi, withSignerIfPossible)
+  // @ts-ignore TYPE NEEDS FIXING
+  return useContract(ROUTER_ADDRESS[chainId], ROUTER_ABI, withSignerIfPossible)
 }
 
 export function useSushiBarContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && BAR_ADDRESS[chainId], BAR_ABI, withSignerIfPossible)
+  return useContract(chainId ? BAR_ADDRESS[chainId] : undefined, BAR_ABI, withSignerIfPossible)
 }
 
 export function useMakerContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MAKER_ADDRESS[chainId], MAKER_ABI, false)
+  return useContract(chainId ? MAKER_ADDRESS[chainId] : undefined, MAKER_ABI, false)
 }
 
 export function useTimelockContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && TIMELOCK_ADDRESS[chainId], TIMELOCK_ABI, false)
+  return useContract(chainId ? TIMELOCK_ADDRESS[chainId] : undefined, TIMELOCK_ABI, false)
 }
 
 export function useBentoBoxContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && BENTOBOX_ADDRESS[chainId], BENTOBOX_ABI, withSignerIfPossible)
+  return useContract(chainId ? BENTOBOX_ADDRESS[chainId] : undefined, BENTOBOX_ABI, withSignerIfPossible)
 }
 
 export function useChainlinkOracle(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && CHAINLINK_ORACLE_ADDRESS[chainId], CHAINLINK_ORACLE_ABI, false)
+  return useContract(chainId ? CHAINLINK_ORACLE_ADDRESS[chainId] : undefined, CHAINLINK_ORACLE_ABI, false)
 }
 
 export function useUniV2FactoryContract(): Contract | null {
   return useContract(UNI_FACTORY_ADDRESS, UNI_FACTORY_ABI, false)
 }
 
+// @ts-ignore TYPE NEEDS FIXING
 export function useComplexRewarderContract(address, withSignerIfPossible?: boolean): Contract | null {
   return useContract(address, COMPLEX_REWARDER_ABI, withSignerIfPossible)
 }
 
+// @ts-ignore TYPE NEEDS FIXING
 export function useCloneRewarderContract(address, withSignerIfPossibe?: boolean): Contract | null {
   return useContract(address, CLONE_REWARDER_ABI, withSignerIfPossibe)
 }
@@ -206,11 +272,16 @@ export function useMeowshiContract(withSignerIfPossible?: boolean): Contract | n
 
 export function useLimitOrderContract(withSignerIfPossibe?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(STOP_LIMIT_ORDER_ADDRESS[chainId], LIMIT_ORDER_ABI, withSignerIfPossibe)
+  return useContract(chainId ? STOP_LIMIT_ORDER_ADDRESS[chainId] : undefined, LIMIT_ORDER_ABI, withSignerIfPossibe)
 }
 
 export function useLimitOrderHelperContract(withSignerIfPossible?: boolean): Contract | null {
-  return useContract('0xe2f736B7d1f6071124CBb5FC23E93d141CD24E12', LIMIT_ORDER_HELPER_ABI, withSignerIfPossible)
+  const { chainId } = useActiveWeb3React()
+  return useContract(
+    chainId ? LIMIT_ORDER_HELPER_ADDRESS[chainId] : undefined,
+    LIMIT_ORDER_HELPER_ABI,
+    withSignerIfPossible
+  )
 }
 
 export function useInariContract(withSignerIfPossible?: boolean): Contract | null {
@@ -219,4 +290,70 @@ export function useInariContract(withSignerIfPossible?: boolean): Contract | nul
 
 export function useZenkoContract(withSignerIfPossible?: boolean): Contract | null {
   return useContract('0xa8f676c49f91655ab3b7c3ea2b73bb3088b2bc1f', ZENKO_ABI, withSignerIfPossible)
+}
+
+export function useTridentMigrationContract() {
+  const { chainId } = useActiveWeb3React()
+  return useContract(
+    chainId ? (TRIDENT as any)[chainId][0].contracts.TridentSushiRollCP.address : undefined,
+    chainId ? (TRIDENT as any)[chainId][0].contracts.TridentSushiRollCP.abi : undefined
+  )
+}
+
+export function useTridentRouterContract(withSignerIfPossible?: boolean): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const router = TRIDENT[chainId]?.[0]?.contracts.TridentRouter
+  return useContract(router?.address, router?.abi, withSignerIfPossible)
+}
+
+export function useMasterDeployerContract(withSignerIfPossible?: boolean): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const masterDeployer = TRIDENT[chainId]?.[0]?.contracts.MasterDeployer
+  return useContract(masterDeployer?.address, masterDeployer?.abi, withSignerIfPossible)
+}
+
+export function useConstantProductPoolFactory(withSignerIfPossible?: boolean): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const factory = TRIDENT[chainId]?.[0]?.contracts.ConstantProductPoolFactory
+  return useContract(factory?.address, factory?.abi, withSignerIfPossible)
+}
+
+export function useStablePoolFactory(withSignerIfPossible?: boolean): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const factory = TRIDENT[chainId]?.[0]?.contracts.HybridPoolFactory
+  return useContract(factory?.address, factory?.abi, withSignerIfPossible)
+}
+
+export function useMisoHelperContract(withSignerIfPossible = true): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const factory = MISO[chainId]?.[CHAIN_KEY[chainId]]?.contracts.MISOHelper
+  return useContract(factory?.address, MISO_HELPER_ABI, withSignerIfPossible)
+}
+
+export function useDashboardContract(): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  let address: string | undefined
+  if (chainId) {
+    switch (chainId) {
+      case ChainId.ETHEREUM:
+        address = '0xD132Ce8eA8865348Ac25E416d95ab1Ba84D216AF'
+        break
+      case ChainId.ROPSTEN:
+        address = '0xC95678C10CB8b3305b694FF4bfC14CDB8aD3AB35'
+        break
+      case ChainId.BSC:
+        address = '0xCFbc963f223e39727e7d4075b759E97035457b48'
+        break
+    }
+  }
+  return useContract(address, DASHBOARD_ABI, false)
+}
+
+export function useQuickSwapFactoryContract(): Contract | null {
+  return useContract('0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', FACTORY_ABI, false)
 }

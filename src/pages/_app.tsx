@@ -21,6 +21,7 @@ import React, { Fragment, useEffect } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
 import { RecoilRoot } from 'recoil'
 import { PersistGate } from 'redux-persist/integration/react'
+import { BlockNumberProvider } from 'lib/hooks/useBlockNumber'
 
 const Web3ProviderNetwork: any = dynamic(() => import('../components/Web3ProviderNetwork'), { ssr: false })
 
@@ -73,21 +74,23 @@ function MyApp({ Component, pageProps }) {
               <ReduxProvider store={store}>
                 {/*@ts-ignore TYPE NEEDS FIXING*/}
                 <PersistGate loading={<Dots>loading</Dots>} persistor={persistor}>
-                  <>
-                    <ListsUpdater />
-                    <UserUpdater />
-                    <ApplicationUpdater />
-                    <MulticallUpdater />
-                  </>
-                  <RecoilRoot>
-                    <Provider>
-                      <Layout>
-                        <Guard>
-                          <Component {...pageProps} />
-                        </Guard>
-                      </Layout>
-                    </Provider>
-                  </RecoilRoot>
+                  <BlockNumberProvider>
+                    <>
+                      <ListsUpdater />
+                      <UserUpdater />
+                      <ApplicationUpdater />
+                      <MulticallUpdater />
+                    </>
+                    <RecoilRoot>
+                      <Provider>
+                        <Layout>
+                          <Guard>
+                            <Component {...pageProps} />
+                          </Guard>
+                        </Layout>
+                      </Provider>
+                    </RecoilRoot>
+                  </BlockNumberProvider>
                 </PersistGate>
               </ReduxProvider>
             </Web3ReactManager>

@@ -11,7 +11,7 @@ import { useActiveWeb3React } from 'app/services/web3'
 import { ChainId } from '@sushiswap/core-sdk'
 import { NETWORK_ICON } from 'app/config/networks'
 import { useEffect, useRef, useState } from 'react'
-import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus, useWalletBalance } from 'app/hooks'
+import { useAcceptQuote, useGetQuote, useUpdateQuoteStatus, useFaucetBalance, useWalletBalance } from 'app/hooks'
 import Loader from 'app/components/Loader'
 import Button from 'app/components/Button'
 import Web3Connect from 'app/components/Web3Connect'
@@ -20,9 +20,9 @@ import Dots from 'app/components/Dots'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ethers } from 'ethers'
 import PreviousTransactions from 'app/components/PreviousTransactions'
-import { useETHBalances } from 'app/state/wallet/hooks'
 import ChainHelper from 'app/components/ChainHelper'
 import { formatValue } from 'helpers'
+import { useNativeCurrencyBalances } from 'lib/hooks/useCurrencyBalance'
 
 export default function Home() {
   const { i18n } = useLingui()
@@ -39,18 +39,26 @@ export default function Home() {
   const [sent, setSent] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
   const [currentAccount, setCurrentAccount] = useState<string>('')
+  const [walletBalance, setWalletBalance] = useState<number>(0)
 
-  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const interval: any = useRef()
 
   const calculateGasMargin = (value: BigNumber): BigNumber => {
     return value.mul(BigNumber.from(10000 + 2000)).div(BigNumber.from(10000))
   }
 
+  const getUserWalletBalance = async () => {
+    const userEthWalletBalance = await useWalletBalance(chainId, account)
+    if (userEthWalletBalance > 0 && userEthWalletBalance !== walletBalance) {
+      setWalletBalance(userEthWalletBalance)
+    }
+  }
+
   const getQuote = async () => {
     setError('')
     setAccepted(false)
     setReady(false)
+    getUserWalletBalance()
     const newQuote = await useGetQuote(currentAccount, chainId, networks)
     if (
       newQuote.outgoing &&
@@ -88,7 +96,7 @@ export default function Home() {
     const walletBalances = {}
     ACTIVATED_NETWORKS.forEach(async (key: ChainId, i: number) => {
       if (!faucetBalances[key]) {
-        walletBalances[key] = await useWalletBalance(key)
+        walletBalances[key] = await useFaucetBalance(key)
       } else {
         initialQuery = false
       }
@@ -179,10 +187,10 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (quote && userEthBalance && quote.incomming_rate > Number(userEthBalance?.toSignificant(4))) {
+    if (quote && walletBalance > 0 && quote.incomming_rate > walletBalance) {
       setError(i18n._(t`Your ${SUPPORTED_NETWORKS[quote.incomming].nativeCurrency.symbol} balance is insufficient`))
     }
-  }, [userEthBalance, quote])
+  }, [walletBalance, quote])
 
   useEffect(() => {
     setCurrentAccount(account)

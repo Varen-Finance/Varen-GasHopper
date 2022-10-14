@@ -1,15 +1,12 @@
 // NOTE: Try not to add anything to thie file, it's almost entirely refactored out.
 
-import { ChainId, ROUTER_ADDRESS } from '@sushiswap/core-sdk'
-import { ARCHER_ROUTER_ADDRESS } from '@sushiswap/sdk'
-import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
-
 import { AddressZero } from '@ethersproject/constants'
-import ArcherSwapRouterABI from '../constants/abis/archer-router.json'
 import { Contract } from '@ethersproject/contracts'
-import IUniswapV2Router02ABI from '../constants/abis/uniswap-v2-router-02.json'
-import IUniswapV2Router02NoETHABI from '../constants/abis/uniswap-v2-router-02-no-eth.json'
-import { isAddress } from './validate'
+import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
+import { ChainId, ROUTER_ADDRESS } from '@sushiswap/core-sdk'
+import IUniswapV2Router02ABI from 'app/constants/abis/uniswap-v2-router-02.json'
+import IUniswapV2Router02NoETHABI from 'app/constants/abis/uniswap-v2-router-02-no-eth.json'
+import { isAddress } from 'app/functions/validate'
 
 // account is not optional
 export function getSigner(library: Web3Provider, account: string): JsonRpcSigner {
@@ -26,8 +23,7 @@ export function getContract(address: string, ABI: any, library: Web3Provider, ac
   if (!isAddress(address) || address === AddressZero) {
     throw Error(`Invalid 'address' parameter '${address}'.`)
   }
-
-  return new Contract(address, ABI, getProviderOrSigner(library, account) as any)
+  return new Contract(address, ABI, getProviderOrSigner(library, account))
 }
 
 export function getRouterAddress(chainId?: ChainId) {
@@ -45,8 +41,4 @@ export function getRouterContract(chainId: number, library: Web3Provider, accoun
     library,
     account
   )
-}
-
-export function getArcherRouterContract(chainId: number, library: Web3Provider, account?: string): Contract {
-  return getContract(ARCHER_ROUTER_ADDRESS[chainId as ChainId] ?? '', ArcherSwapRouterABI, library, account)
 }

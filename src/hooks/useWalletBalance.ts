@@ -1,13 +1,23 @@
 import { ChainId } from '@sushiswap/core-sdk'
-import { API_URL } from 'app/constants'
+import { FAUCET_ADDRESS, SUPPORTED_NETWORKS } from 'app/constants'
 import axios from 'axios'
+import { ethers } from 'ethers'
 
-const useWalletBalance = async (chainId: ChainId) => {
+const useWalletBalance = async (chainId: ChainId, address: string) => {
+  const url = SUPPORTED_NETWORKS[chainId].blockExplorerUrls[1]
+  const keys = SUPPORTED_NETWORKS[chainId].blockExplorerAPIkeys
+  const key = keys[Math.floor(Math.random() * keys.length)]
   const res = async () => {
     try {
-      const response = await axios.get(`${API_URL}/wallet_funds/${chainId}`)
-      const data = await response.data
-      return data
+      const response = await axios.get(
+        `${url}/api?module=account&action=balance&address=${address}&tag=latest&apikey=${key}`
+      )
+      const data = await response.data.result
+      if (!isNaN(+data)) {
+        return Number(ethers.utils.formatEther(data))
+      } else {
+        return 0
+      }
     } catch (error) {
       console.log(error)
       return 0
@@ -16,5 +26,6 @@ const useWalletBalance = async (chainId: ChainId) => {
 
   return res()
 }
+
 
 export default useWalletBalance
