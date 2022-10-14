@@ -38,6 +38,7 @@ export default function Home() {
   const [waiting, setWaiting] = useState<boolean>(false)
   const [sent, setSent] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
+  const [currentAccount, setCurrentAccount] = useState<string>('')
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const interval: any = useRef()
@@ -50,8 +51,9 @@ export default function Home() {
     setError('')
     setAccepted(false)
     setReady(false)
-    const newQuote = await useGetQuote(account, chainId, networks)
+    const newQuote = await useGetQuote(currentAccount, chainId, networks)
     if (
+      newQuote.outgoing &&
       networks.length === newQuote.outgoing.length &&
       newQuote.outgoing.every((item) => networks.indexOf(item) > -1)
     ) {
@@ -62,7 +64,7 @@ export default function Home() {
 
   const acceptQuote = async () => {
     if (account && quote && quote.id) {
-      const acceptedQuote = await useAcceptQuote(quote.id, account)
+      const acceptedQuote = await useAcceptQuote(quote.id, currentAccount)
       if (acceptedQuote === 'accepted 1 contract(s)') {
         clearInterval(interval.current)
         setAccepted(true)
@@ -73,8 +75,8 @@ export default function Home() {
   }
 
   const updateQuoteStatus = async () => {
-    if (account && quote && quote.id) {
-      const updatedQuote = await useUpdateQuoteStatus(quote.id, account)
+    if (quote && quote.id) {
+      const updatedQuote = await useUpdateQuoteStatus(quote.id, currentAccount)
       if (updatedQuote.send) {
         resetState()
       }
@@ -183,19 +185,23 @@ export default function Home() {
   }, [userEthBalance, quote])
 
   useEffect(() => {
+    setCurrentAccount(account)
+  }, [account])
+
+  useEffect(() => {
     resetState()
-  }, [chainId, account])
+  }, [chainId, currentAccount])
 
   useEffect(() => {
     const quoteEqualsNetworks =
       quote &&
-      quote?.outgoing &&
-      quote?.incomming &&
-      quote?.incomming === chainId &&
-      networks.length === quote?.outgoing.length &&
+      quote.outgoing &&
+      quote.incomming &&
+      quote.incomming === chainId &&
+      networks.length === quote.outgoing.length &&
       quote.outgoing.every((item) => networks.indexOf(item) > -1)
-    if (networks && chainId && account && networks.length >= 1 && !quoteEqualsNetworks) getQuote()
-  }, [networks])
+    if (networks && chainId && currentAccount && networks.length >= 1 && !quoteEqualsNetworks) getQuote()
+  }, [networks, currentAccount])
 
   useEffect(() => {
     clearInterval(interval.current)
@@ -209,7 +215,6 @@ export default function Home() {
 
   useEffect(() => {
     clearInterval(interval.current)
-
     if (sent) {
       interval.current = setInterval(() => {
         updateQuoteStatus()
@@ -233,6 +238,13 @@ export default function Home() {
       })
     }
   }, [faucetBalances, quote])
+
+  useEffect(() => {
+    if (!currentAccount) setCurrentAccount('0x0000000000000000000000000000000000000000')
+    if (networks && currentAccount && !quote && chainId) {
+      getQuote()
+    }
+  }, [networks, currentAccount, quote, chainId])
 
   return (
     <Container id="home-page" className="p-4 md:py-10">
@@ -270,16 +282,14 @@ export default function Home() {
             </Typography>
             <div className={classNames('flex w-full mt-4 flex-wrap', 'md:flex-nowrap')}>
               <Web3Network variant={'large'} />
-              {account && (
-                <div className="flex flex-wrap items-center content-center w-full mt-4 md:mt-0 md:ml-4 md:w-auto">
-                  <Typography variant="sm" className="w-full">
-                    {ready && quote ? `${quote.incomming_rate} ${nativeCurrency}` : <Loader />}
-                  </Typography>
-                  <Typography variant="sm" className="w-full italic text-secondary">
-                    {ready && quote ? `~${formatValue(quote.incomming_in_usd, 2, 2, true, '$')}` : <Loader />}
-                  </Typography>
-                </div>
-              )}
+              <div className="flex flex-wrap items-center content-center w-full mt-4 md:mt-0 md:ml-4 md:w-auto">
+                <Typography variant="sm" className="w-full">
+                  {ready && quote ? `${quote.incomming_rate} ${nativeCurrency}` : <Loader />}
+                </Typography>
+                <Typography variant="sm" className="w-full italic text-secondary">
+                  {ready && quote ? `~${formatValue(quote.incomming_in_usd, 2, 2, true, '$')}` : <Loader />}
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
@@ -424,7 +434,7 @@ export default function Home() {
             </>
           )}
         </div>
-        {account && ready && quote && quote.outgoing_rates && (
+        {ready && quote && quote.outgoing_rates && (
           <div className={classNames('w-full oder-1', 'md:w-2/5 md:ml-1/5 md:order-2')}>
             {quote.outgoing.map((oCID: ChainId, i: number) => {
               return (
@@ -432,7 +442,7 @@ export default function Home() {
                   key={i}
                   amount={quote.outgoing_rates[i]}
                   nativeCurrency={SUPPORTED_NETWORKS[oCID].nativeCurrency.symbol}
-                  recipient={shortenAddress(account, 8)}
+                  recipient={!account ? 'Your Wallet' : shortenAddress(account, 8)}
                   chainId={oCID}
                 />
               )
