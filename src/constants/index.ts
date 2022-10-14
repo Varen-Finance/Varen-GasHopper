@@ -185,3 +185,27 @@ export const SUPPORTED_NETWORKS: SupportedNetworksProps = {
     blockStart: 33894200,
   },
 }
+
+enum ChainSubdomain {
+  ETHEREUM = 'ethereum',
+  MATIC = 'polygon',
+  FANTOM = 'fantom',
+  BSC = 'bnb',
+  ARBITRUM = 'arbitrum',
+  AVALANCHE = 'avalanche',
+  CELO = 'celo',
+  MOONRIVER = 'moonriver',
+  MOONBEAM = 'moonbeam',
+}
+
+export const SUBDOMAIN_CHAIN_ID: { [subdomain: string]: number } = {
+  [ChainSubdomain.ETHEREUM]: ChainId.ETHEREUM,
+  [ChainSubdomain.MATIC]: ChainId.MATIC,
+  [ChainSubdomain.BSC]: ChainId.BSC,
+  [ChainSubdomain.FANTOM]: ChainId.FANTOM,
+  [ChainSubdomain.ARBITRUM]: ChainId.ARBITRUM,
+  [ChainSubdomain.AVALANCHE]: ChainId.AVALANCHE,
+  [ChainSubdomain.CELO]: ChainId.CELO,
+  [ChainSubdomain.MOONRIVER]: ChainId.MOONRIVER,
+  [ChainSubdomain.MOONBEAM]: ChainId.MOONBEAM,
+}
