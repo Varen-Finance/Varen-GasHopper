@@ -7,7 +7,7 @@ import { NETWORK_ICON, NETWORK_LABEL } from 'app/config/networks'
 import { ACTIVATED_NETWORKS, SUPPORTED_NETWORKS } from 'app/constants'
 import { classNames } from 'app/functions'
 import { useActiveWeb3React } from 'app/services/web3'
-import { ApplicationModal } from 'app/state/application/actions'
+import { ApplicationModal } from 'app/state/application/reducer'
 import { useModalOpen, useNetworkModalToggle } from 'app/state/application/hooks'
 // @ts-ignore TYPE NEEDS FIXING
 import Image from 'next/image'

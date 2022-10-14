@@ -1,68 +1,42 @@
-import { useCallback, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
-import useDebounce from '../../hooks/useDebounce'
-import useIsWindowVisible from '../../hooks/useIsWindowVisible'
-import { updateBlockNumber } from './actions'
+import { ChainId } from '@sushiswap/core-sdk'
+import useDebounce from 'app/hooks/useDebounce'
+import useIsWindowVisible from 'app/hooks/useIsWindowVisible'
+import { useActiveWeb3React } from 'app/services/web3'
+import { useEffect, useState } from 'react'
+
+import { useAppDispatch } from '../hooks'
+import { updateChainId } from './reducer'
+
+/**
+ * Returns the input chain ID if chain is supported. If not, return undefined
+ * @param chainId a chain ID, which will be returned if it is a supported chain ID
+ */
+export function supportedChainId(chainId: number | undefined): ChainId | undefined {
+  if (typeof chainId === 'number' && chainId in ChainId) {
+    return chainId
+  }
+  return undefined
+}
 
 export default function Updater(): null {
-  const { library, chainId } = useActiveWeb3React()
-  const dispatch = useDispatch()
-
+  const { chainId, library } = useActiveWeb3React()
+  const dispatch = useAppDispatch()
   const windowVisible = useIsWindowVisible()
 
-  const [state, setState] = useState<{
-    chainId: number | undefined
-    blockNumber: number | null
-  }>({
-    chainId,
-    blockNumber: null,
-  })
+  const [activeChainId, setActiveChainId] = useState(chainId)
 
-  const blockNumberCallback = useCallback(
-    (blockNumber: number) => {
-      setState((state) => {
-        if (chainId === state.chainId) {
-          if (typeof state.blockNumber !== 'number') return { chainId, blockNumber }
-          return {
-            chainId,
-            blockNumber: Math.max(blockNumber, state.blockNumber),
-          }
-        }
-        return state
-      })
-    },
-    [chainId, setState]
-  )
-
-  // attach/detach listeners
   useEffect(() => {
-    if (!library || !chainId || !windowVisible) return undefined
-
-    setState({ chainId, blockNumber: null })
-
-    library
-      .getBlockNumber()
-      .then(blockNumberCallback)
-      .catch((error) => console.error(`Failed to get block number for chainId: ${chainId}`, error))
-
-    library.on('block', blockNumberCallback)
-    return () => {
-      library.removeListener('block', blockNumberCallback)
+    if (library && chainId && windowVisible) {
+      setActiveChainId(chainId)
     }
-  }, [dispatch, chainId, library, blockNumberCallback, windowVisible])
+  }, [dispatch, chainId, library, windowVisible])
 
-  const debouncedState = useDebounce(state, 100)
+  const debouncedChainId = useDebounce(activeChainId, 100)
 
   useEffect(() => {
-    if (!debouncedState.chainId || !debouncedState.blockNumber || !windowVisible) return
-    dispatch(
-      updateBlockNumber({
-        chainId: debouncedState.chainId,
-        blockNumber: debouncedState.blockNumber,
-      })
-    )
-  }, [windowVisible, dispatch, debouncedState.blockNumber, debouncedState.chainId])
+    const chainId = debouncedChainId ? supportedChainId(debouncedChainId) ?? null : null
+    dispatch(updateChainId({ chainId }))
+  }, [dispatch, debouncedChainId])
 
   return null
 }

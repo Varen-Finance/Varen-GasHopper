@@ -1,7 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 const linguiConfig = require('./lingui.config.js')
-const { ChainId } = require('@sushiswap/core-sdk')
 const { locales, sourceLocale } = linguiConfig
 
 const { screens } = defaultTheme
