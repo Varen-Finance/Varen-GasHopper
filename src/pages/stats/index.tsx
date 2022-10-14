@@ -8,7 +8,7 @@ import { useLingui } from '@lingui/react'
 import { ACTIVATED_NETWORKS, SUPPORTED_NETWORKS } from 'app/constants'
 import { ChainId } from '@sushiswap/core-sdk'
 import { useEffect, useRef, useState } from 'react'
-import { useFeesGenerated, useNativePrice, useWalletBalance } from 'app/hooks'
+import { useFeesGenerated, useNativePrice, useFaucetBalance } from 'app/hooks'
 import { NETWORK_ICON } from 'app/config/networks'
 import { formatValue } from 'helpers'
 
@@ -26,7 +26,7 @@ export default function Stats() {
     let totalFees = 0
     let totalTransactions = 0
     ACTIVATED_NETWORKS.forEach(async (key: ChainId) => {
-      const balance = await useWalletBalance(key)
+      const balance = await useFaucetBalance(key)
       const price = await useNativePrice(key)
       const { totalFee, txCount } = await useFeesGenerated(key)
       newChainInfo[key].walletBalance = balance

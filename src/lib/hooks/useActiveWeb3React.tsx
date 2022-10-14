@@ -113,6 +113,6 @@ export function ActiveWeb3Provider({
       console.error('web3 error:', error)
     }
   }, [error])
-
+  //@ts-ignore
   return <Web3Context.Provider value={web3}>{children}</Web3Context.Provider>
 }
