@@ -37,7 +37,7 @@ const externalLinks = (i18n: I18n) => [
   {
     name: i18n._(t`Github`),
     image: <Image src="https://varenx.com/images/misc/github.svg" alt="Github" width={18} height={18} />,
-    href: 'https://github.com/Varen-Finance/Varen-gashopper',
+    href: 'https://github.com/Varen-Finance/Varen-GasHopper',
     external: true,
   },
   {
