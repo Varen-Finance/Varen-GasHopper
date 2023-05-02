@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Hamburger</title>
+    <g id="RenswapMVP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OpenMenus" transform="translate(-1322.000000, -75.000000)" fill="#D8D8D8">
+            <g id="Group-5" transform="translate(1307.000000, 59.000000)">
+                <g id="Hamburger" transform="translate(15.914673, 16.005582)">
+                    <rect id="Rectangle" transform="translate(7.585327, 7.585327) rotate(-45.000000) translate(-7.585327, -7.585327) " x="-1.91467271" y="6.35805456" width="19" height="2.45454545" rx="1.2"></rect>
+                    <rect id="Rectangle-Copy-2" transform="translate(7.585327, 7.585327) rotate(45.000000) translate(-7.585327, -7.585327) " x="-1.91467271" y="6.35805456" width="19" height="2.45454545" rx="1.2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

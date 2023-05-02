@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "app/components": ["./components/index.ts"],
+      "app/components/*": ["./components/*"],
+      "app/constants": ["./constants"],
+      "app/constants/*": ["./constants/*"],
+      "app/functions": ["./functions"],
+      "app/functions/*": ["./functions/*"],
+      "app/hooks": ["./hooks"],
+      "app/hooks/*": ["./hooks/*"],
+      "app/layouts": ["./layouts"],
+      "app/layouts/*": ["./layouts/*"],
+      "app/types": ["./types"],
+      "app/types/*": ["./types/*"]
+    },
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "downlevelIteration": true,
+    "incremental": true
+  },
+  "include": ["**/d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
