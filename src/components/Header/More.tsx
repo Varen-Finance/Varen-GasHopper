@@ -37,19 +37,13 @@ const externalLinks = (i18n: I18n) => [
   {
     name: i18n._(t`Github`),
     image: <Image src="https://varenx.com/images/misc/github.svg" alt="Github" width={18} height={18} />,
-    href: 'https://github.varen.finance/',
+    href: 'https://github.com/Varen-Finance/Varen-gashopper',
     external: true,
   },
   {
     name: i18n._(t`Medium`),
     image: <Image src="https://varenx.com/images/misc/medium.svg" alt="Medium" width={18} height={18} />,
     href: 'https://blog.varen.finance/',
-    external: true,
-  },
-  {
-    name: i18n._(t`Telegram`),
-    image: <Image src="https://varenx.com/images/misc/telegram.svg" alt="Telegram" width={18} height={18} />,
-    href: 'https://telegram.varen.finance/',
     external: true,
   },
 ]
