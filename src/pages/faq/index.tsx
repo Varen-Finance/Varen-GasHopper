@@ -1,11 +1,11 @@
-import Container from '../../components/Container'
-import Head from 'next/head'
-import { classNames } from 'app/functions'
-import Typography from 'app/components/Typography'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { FAUCET_ADDRESS } from 'app/constants'
 import ExternalLink from 'app/components/ExternalLink'
+import Typography from 'app/components/Typography'
+import { FAUCET_ADDRESS } from 'app/constants'
+import { classNames } from 'app/functions'
+import Head from 'next/head'
+import Container from '../../components/Container'
 
 export default function Faq() {
   const { i18n } = useLingui()
@@ -129,7 +129,7 @@ export default function Faq() {
             <Typography variant="base" className="text-secondary">
               {i18n._(t`You can check the Balances of it`)}
             </Typography>
-            <ExternalLink href="https://zapper.fi/account/varen.eth" className="ml-2">
+            <ExternalLink href="https://zapper.xyz/account/varen.eth?tab=portfolio" className="ml-2">
               {i18n._(t`here`)}
             </ExternalLink>
           </div>

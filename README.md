@@ -55,7 +55,7 @@ You can either wait for the balance to be replenished by other exchanges, or nav
 ## Where can I check the balances of the GasHopper wallet?
 
 GasHopper uses the `varen.eth` ENS Domain.
-You can check the Balances of it [here](https://zapper.fi/account/varen.eth)
+You can check the Balances of it [here](https://zapper.xyz/account/varen.eth?tab=portfolio)
 
 ---
 
