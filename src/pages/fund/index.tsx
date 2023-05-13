@@ -201,7 +201,7 @@ export default function Home() {
       return
     }
 
-    if (walletBalance > 0 && quote?.incomming_rate > walletBalance) {
+    if (quote?.incomming_rate > walletBalance) {
       setError(i18n._(t`Your ${nativeCurrencySymbol} balance is insufficient`))
       return
     }
