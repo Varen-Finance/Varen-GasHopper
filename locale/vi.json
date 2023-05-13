@@ -48,7 +48,6 @@
   "Send {nativeCurrencySymbol}": "",
   "Statistics": "Số liệu thống kê",
   "Switching chains": "",
-  "Telegram": "Telegram",
   "The wallet address of the GasHopper funding wallet is: {FAUCET_ADDRESS}": "Địa chỉ của ví funding GasHopper là: {FAUCET_ADDRESS}",
   "To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.": "Để tránh bất kỳ khả năng tấn công nào của dApp, bạn phải chấp nhận tỷ lệ chuyển, dựa trên giá TWAP hiện tại của các token gốc trong quá trình trao đổi. Sau khi bạn chấp nhận tỷ lệ chuyển của mình, phần mềm trung gian sẽ tìm kiếm khoản tiền gửi của bạn vào 'ví thông minh' của GasHopper.",
   "Token": "Token",

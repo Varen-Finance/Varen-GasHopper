@@ -48,7 +48,6 @@
   "Send {nativeCurrencySymbol}": "",
   "Statistics": "统计",
   "Switching chains": "",
-  "Telegram": "电报",
   "The wallet address of the GasHopper funding wallet is: {FAUCET_ADDRESS}": "GasHopper资金钱包的钱包地址为：{FAUCET_ADDRESS}",
   "To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.": "为避免对 dApp 的任何攻击，您必须接受一个比率，该比率基于交换过程中各个原生代币的当前 TWAP 价格。 在您接受您的费率后，中间件将观察您的存款到 GasHopper 的“智能钱包”。",
   "Token": "代币",

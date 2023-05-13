@@ -48,7 +48,6 @@
   "Send {nativeCurrencySymbol}": "",
   "Statistics": "İstatistikler",
   "Switching chains": "",
-  "Telegram": "Telegram",
   "The wallet address of the GasHopper funding wallet is: {FAUCET_ADDRESS}": "GasHopper fon cüzdani adresi: {FAUCET_ADDRESS}",
   "To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.": "dApp süistimal edilme durumlarindan kaçinilmasi için, takas işleminin bireysel yerel tokenlarin güncel TWAP ücretlerine dayali takas oranini kabul etmeniz gerekir. Oraninizi kabul ettikten sonra, ara katman yazilimi Grashopper'in 'akilli cüzdan'ina yatirdiğinizi arar.",
   "Token": "Token",

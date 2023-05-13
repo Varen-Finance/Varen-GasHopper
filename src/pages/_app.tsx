@@ -3,8 +3,9 @@ import { I18nProvider } from '@lingui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
+import Header from 'app/components/Header'
+import Main from 'app/components/Main'
 import { NETWORK_ICON } from 'app/constants'
-import DefaultLayout from 'app/layouts/Default'
 import * as plurals from 'make-plural/plurals'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -28,7 +29,7 @@ const ethereumClient = new EthereumClient(wagmiClient, chains)
 const queryClient = new QueryClient()
 
 // @ts-ignore TYPE NEEDS FIXING
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const router = useRouter()
   const { locale } = router
   useEffect(() => {
@@ -44,9 +45,6 @@ function MyApp({ Component, pageProps }) {
     load(locale)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
-
-  // Allows for conditionally setting a layout to be hoisted per page
-  const Layout = Component.Layout || DefaultLayout
 
   const [ready, setReady] = useState(false)
 
@@ -64,25 +62,28 @@ function MyApp({ Component, pageProps }) {
         />
         <meta name="fortmatic-site-verification" content="IYT2GS7WhWUUGBhE" />
       </Head>
-      <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-        <QueryClientProvider client={queryClient}>
-          {ready ? (
-            <WagmiConfig client={wagmiClient}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </WagmiConfig>
-          ) : null}
-          <Web3Modal
-            enableNetworkView={true}
-            projectId={projectId}
-            ethereumClient={ethereumClient}
-            chainImages={NETWORK_ICON}
-          />
-        </QueryClientProvider>
-      </I18nProvider>
+      <WagmiConfig client={wagmiClient}>
+        <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+          <QueryClientProvider client={queryClient}>
+            {ready ? (
+              <div className="z-0 flex flex-col items-center w-full h-full pb-16 background-gradient lg:pb-0 lg:p-1">
+                <Header />
+                <Main>
+                  <Component {...pageProps} />
+                </Main>
+              </div>
+            ) : null}
+          </QueryClientProvider>
+        </I18nProvider>
+      </WagmiConfig>{' '}
+      <Web3Modal
+        enableNetworkView={true}
+        projectId={projectId}
+        ethereumClient={ethereumClient}
+        chainImages={NETWORK_ICON}
+      />
     </>
   )
 }
 
-export default MyApp
+export default App

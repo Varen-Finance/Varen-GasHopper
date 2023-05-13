@@ -48,7 +48,6 @@
   "Send {nativeCurrencySymbol}": "",
   "Statistics": "आंकड़े",
   "Switching chains": "",
-  "Telegram": "Telegram",
   "The wallet address of the GasHopper funding wallet is: {FAUCET_ADDRESS}": "GasHopper फंडिंग वॉलेट का वॉलेट पता है: {FAUCET_ADDRESS}",
   "To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.": "dApp की किसी भी शोषण क्षमता से बचने के लिए, आपको एक्सचेंज प्रक्रिया के व्यक्तिगत देशी टोकन की वर्तमान TWAP कीमतों के आधार पर विनिमय दर को स्वीकार करना होगा। आपके द्वारा अपना दर स्वीकार करने के बाद, मिडलवेयर GasHopper के 'स्मार्ट वॉलेट' में आपकी जमा राशि की तलाश कर रहा है।",
   "Token": "टोकन",

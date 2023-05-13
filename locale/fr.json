@@ -48,7 +48,6 @@
   "Send {nativeCurrencySymbol}": "",
   "Statistics": "Stats",
   "Switching chains": "",
-  "Telegram": "Telegram",
   "The wallet address of the GasHopper funding wallet is: {FAUCET_ADDRESS}": "Le portefeuille de financement GasHopper est: {FAUCET_ADDRESS}",
   "To avoid any exploit capabilities of the dApp, you have to accept a rate of exchange, based on the current TWAP prices of the individual native tokens of the exchange process. After you accepted your rate, the middleware is looking for your deposit to the 'smart wallet' of GasHopper.": "Pour eviter tout risque d'exploitation de la solution, vous devez accepter la taux d'echange propose, bse sur le prix natif du token. Une fois le taux accepté, la plateforme versera les fonds dans votre wallet de GasHopper.",
   "Token": "Token",
